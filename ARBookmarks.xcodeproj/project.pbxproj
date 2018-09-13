@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C08A738E214AD07A0081DF13 /* Scene.sks in Resources */ = {isa = PBXBuildFile; fileRef = C08A738D214AD0790081DF13 /* Scene.sks */; };
 		C08B5BE7214A43EC00516866 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C08B5BE6214A43EC00516866 /* AppDelegate.swift */; };
-		C08B5BE9214A43EC00516866 /* Scene.sks in Resources */ = {isa = PBXBuildFile; fileRef = C08B5BE8214A43EC00516866 /* Scene.sks */; };
 		C08B5BEB214A43EC00516866 /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C08B5BEA214A43EC00516866 /* Scene.swift */; };
 		C08B5BED214A43EC00516866 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C08B5BEC214A43EC00516866 /* ViewController.swift */; };
 		C08B5BF0214A43EC00516866 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C08B5BEE214A43EC00516866 /* Main.storyboard */; };
@@ -18,9 +18,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C08A738D214AD0790081DF13 /* Scene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = Scene.sks; path = ../../../ARBoomarks/ARBoomarks/Scene.sks; sourceTree = "<group>"; };
 		C08B5BE3214A43EC00516866 /* ARBookmarks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARBookmarks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C08B5BE6214A43EC00516866 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C08B5BE8214A43EC00516866 /* Scene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Scene.sks; sourceTree = "<group>"; };
 		C08B5BEA214A43EC00516866 /* Scene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scene.swift; sourceTree = "<group>"; };
 		C08B5BEC214A43EC00516866 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C08B5BEF214A43EC00516866 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -61,7 +61,7 @@
 			isa = PBXGroup;
 			children = (
 				C08B5BE6214A43EC00516866 /* AppDelegate.swift */,
-				C08B5BE8214A43EC00516866 /* Scene.sks */,
+				C08A738D214AD0790081DF13 /* Scene.sks */,
 				C08B5BEA214A43EC00516866 /* Scene.swift */,
 				C08B5BEC214A43EC00516866 /* ViewController.swift */,
 				C08B5BEE214A43EC00516866 /* Main.storyboard */,
@@ -131,10 +131,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C08B5BE9214A43EC00516866 /* Scene.sks in Resources */,
 				C08B5BF5214A43ED00516866 /* LaunchScreen.storyboard in Resources */,
 				C08B5BF2214A43ED00516866 /* Assets.xcassets in Resources */,
 				C08B5BF0214A43EC00516866 /* Main.storyboard in Resources */,
+				C08A738E214AD07A0081DF13 /* Scene.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

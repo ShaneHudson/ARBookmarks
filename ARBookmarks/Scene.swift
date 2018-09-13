@@ -5,7 +5,7 @@
 //  Created by Shane Hudson on 13/09/2018.
 //  Copyright © 2018 Shane Hudson. All rights reserved.
 //
-import Foundation
+
 import SpriteKit
 import ARKit
 
