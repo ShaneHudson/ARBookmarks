@@ -7,7 +7,30 @@
 		<key>ARBookmarks.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>0</integer>
+			<integer>1</integer>
+		</dict>
+		<key>Add Bookmark.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>3</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>C08B5BE2214A43EC00516866</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C0E8B16C214BB791007A1D29</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C0E8B17F214BC368007A1D29</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>

@@ -21,8 +21,6 @@ class Scene: SKScene {
         // Called before each frame is rendered
     }
     
-    
-    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         let location = sight.position
         
@@ -32,25 +30,30 @@ class Scene: SKScene {
         if (targets.count > 0) {
             let target = targets.first as! SKLabelNode
             let url = target.name!
-            promptOpenURL(url: url)
+            promptOpenURL(url: url, node: target)
         } else {
             promptForURL()
         }
     }
     
-    func promptOpenURL(url: String) {
+    func promptOpenURL(url: String, node: SKLabelNode) {
         print("Input: Opening URL " + url)
         let ac = UIAlertController(title: url, message: "Do you want to open this URL in Safari?", preferredStyle: .alert)
         
-        let submitAction = UIAlertAction(title: "Yes", style: .default) { (action) -> Void in
+        let submitAction = UIAlertAction(title: "Open", style: .default) { (action) -> Void in
             UIApplication.shared.open(URL(string: url)!, options: [:])
         }
 
-        let cancelAction = UIAlertAction(title: "No", style: .cancel) { (action) -> Void in
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) -> Void in
             print("Input: Opening URL cancelled")
         }
 
+        let removeAction = UIAlertAction(title: "Remove", style: .destructive) { (action) -> Void in
+            node.removeFromParent()
+        }
+        
         ac.addAction(submitAction)
+        ac.addAction(removeAction)
         ac.addAction(cancelAction)
         view?.window?.rootViewController?.present(ac, animated: true)
     }

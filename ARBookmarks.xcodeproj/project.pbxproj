@@ -15,7 +15,34 @@
 		C08B5BF5214A43ED00516866 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C08B5BF3214A43ED00516866 /* LaunchScreen.storyboard */; };
 		C08B5BFD214A5F4700516866 /* URLAnchor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C08B5BFC214A5F4700516866 /* URLAnchor.swift */; };
 		C0D8E3F1214AD4DF00926475 /* Scene.sks in Resources */ = {isa = PBXBuildFile; fileRef = C0D8E3F0214AD4DF00926475 /* Scene.sks */; };
+		C0E8B197214BC660007A1D29 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E8B196214BC660007A1D29 /* ShareViewController.swift */; };
+		C0E8B19A214BC660007A1D29 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0E8B198214BC660007A1D29 /* MainInterface.storyboard */; };
+		C0E8B19E214BC660007A1D29 /* Add Bookmark.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = C0E8B194214BC660007A1D29 /* Add Bookmark.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C0E8B19C214BC660007A1D29 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C08B5BDB214A43EC00516866 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C0E8B193214BC660007A1D29;
+			remoteInfo = "Add Bookmark";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		C0E8B18E214BC368007A1D29 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				C0E8B19E214BC660007A1D29 /* Add Bookmark.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		C08B5BE3214A43EC00516866 /* ARBookmarks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARBookmarks.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -28,10 +55,37 @@
 		C08B5BF6214A43ED00516866 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C08B5BFC214A5F4700516866 /* URLAnchor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLAnchor.swift; sourceTree = "<group>"; };
 		C0D8E3F0214AD4DF00926475 /* Scene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Scene.sks; sourceTree = "<group>"; };
+		C0E8B16D214BB791007A1D29 /* Share.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Share.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		C0E8B180214BC368007A1D29 /* PinBookmark.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = PinBookmark.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		C0E8B194214BC660007A1D29 /* Add Bookmark.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Add Bookmark.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C0E8B196214BC660007A1D29 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
+		C0E8B199214BC660007A1D29 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		C0E8B19B214BC660007A1D29 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		C08B5BE0214A43EC00516866 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C0E8B16A214BB791007A1D29 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C0E8B17D214BC368007A1D29 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C0E8B191214BC660007A1D29 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -45,6 +99,7 @@
 			isa = PBXGroup;
 			children = (
 				C08B5BE5214A43EC00516866 /* ARBookmarks */,
+				C0E8B195214BC660007A1D29 /* Add Bookmark */,
 				C08B5BE4214A43EC00516866 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -53,6 +108,9 @@
 			isa = PBXGroup;
 			children = (
 				C08B5BE3214A43EC00516866 /* ARBookmarks.app */,
+				C0E8B16D214BB791007A1D29 /* Share.appex */,
+				C0E8B180214BC368007A1D29 /* PinBookmark.appex */,
+				C0E8B194214BC660007A1D29 /* Add Bookmark.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -73,6 +131,16 @@
 			path = ARBookmarks;
 			sourceTree = "<group>";
 		};
+		C0E8B195214BC660007A1D29 /* Add Bookmark */ = {
+			isa = PBXGroup;
+			children = (
+				C0E8B196214BC660007A1D29 /* ShareViewController.swift */,
+				C0E8B198214BC660007A1D29 /* MainInterface.storyboard */,
+				C0E8B19B214BC660007A1D29 /* Info.plist */,
+			);
+			path = "Add Bookmark";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -83,15 +151,68 @@
 				C08B5BDF214A43EC00516866 /* Sources */,
 				C08B5BE0214A43EC00516866 /* Frameworks */,
 				C08B5BE1214A43EC00516866 /* Resources */,
+				C0E8B18E214BC368007A1D29 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				C0E8B19D214BC660007A1D29 /* PBXTargetDependency */,
 			);
 			name = ARBookmarks;
 			productName = ARBookmarks;
 			productReference = C08B5BE3214A43EC00516866 /* ARBookmarks.app */;
 			productType = "com.apple.product-type.application";
+		};
+		C0E8B16C214BB791007A1D29 /* Share */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C0E8B17A214BB791007A1D29 /* Build configuration list for PBXNativeTarget "Share" */;
+			buildPhases = (
+				C0E8B169214BB791007A1D29 /* Sources */,
+				C0E8B16A214BB791007A1D29 /* Frameworks */,
+				C0E8B16B214BB791007A1D29 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Share;
+			productName = Share;
+			productReference = C0E8B16D214BB791007A1D29 /* Share.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		C0E8B17F214BC368007A1D29 /* PinBookmark */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C0E8B18B214BC368007A1D29 /* Build configuration list for PBXNativeTarget "PinBookmark" */;
+			buildPhases = (
+				C0E8B17C214BC368007A1D29 /* Sources */,
+				C0E8B17D214BC368007A1D29 /* Frameworks */,
+				C0E8B17E214BC368007A1D29 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PinBookmark;
+			productName = PinBookmark;
+			productReference = C0E8B180214BC368007A1D29 /* PinBookmark.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		C0E8B193214BC660007A1D29 /* Add Bookmark */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C0E8B19F214BC660007A1D29 /* Build configuration list for PBXNativeTarget "Add Bookmark" */;
+			buildPhases = (
+				C0E8B190214BC660007A1D29 /* Sources */,
+				C0E8B191214BC660007A1D29 /* Frameworks */,
+				C0E8B192214BC660007A1D29 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Add Bookmark";
+			productName = "Add Bookmark";
+			productReference = C0E8B194214BC660007A1D29 /* Add Bookmark.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -104,6 +225,15 @@
 				ORGANIZATIONNAME = "Shane Hudson";
 				TargetAttributes = {
 					C08B5BE2214A43EC00516866 = {
+						CreatedOnToolsVersion = 9.4.1;
+					};
+					C0E8B16C214BB791007A1D29 = {
+						CreatedOnToolsVersion = 9.4.1;
+					};
+					C0E8B17F214BC368007A1D29 = {
+						CreatedOnToolsVersion = 9.4.1;
+					};
+					C0E8B193214BC660007A1D29 = {
 						CreatedOnToolsVersion = 9.4.1;
 					};
 				};
@@ -122,6 +252,9 @@
 			projectRoot = "";
 			targets = (
 				C08B5BE2214A43EC00516866 /* ARBookmarks */,
+				C0E8B16C214BB791007A1D29 /* Share */,
+				C0E8B17F214BC368007A1D29 /* PinBookmark */,
+				C0E8B193214BC660007A1D29 /* Add Bookmark */,
 			);
 		};
 /* End PBXProject section */
@@ -135,6 +268,28 @@
 				C08B5BF2214A43ED00516866 /* Assets.xcassets in Resources */,
 				C0D8E3F1214AD4DF00926475 /* Scene.sks in Resources */,
 				C08B5BF0214A43EC00516866 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C0E8B16B214BB791007A1D29 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C0E8B17E214BC368007A1D29 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C0E8B192214BC660007A1D29 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C0E8B19A214BC660007A1D29 /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -152,7 +307,37 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C0E8B169214BB791007A1D29 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C0E8B17C214BC368007A1D29 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C0E8B190214BC660007A1D29 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C0E8B197214BC660007A1D29 /* ShareViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C0E8B19D214BC660007A1D29 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C0E8B193214BC660007A1D29 /* Add Bookmark */;
+			targetProxy = C0E8B19C214BC660007A1D29 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		C08B5BEE214A43EC00516866 /* Main.storyboard */ = {
@@ -169,6 +354,14 @@
 				C08B5BF4214A43ED00516866 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		C0E8B198214BC660007A1D29 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C0E8B199214BC660007A1D29 /* Base */,
+			);
+			name = MainInterface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -291,6 +484,7 @@
 		C08B5BFA214A43ED00516866 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = G3CVB4GGF4;
@@ -309,6 +503,7 @@
 		C08B5BFB214A43ED00516866 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = G3CVB4GGF4;
@@ -319,6 +514,118 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = net.shanehudson.ARBookmarks;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		C0E8B178214BB791007A1D29 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = G3CVB4GGF4;
+				INFOPLIST_FILE = Share/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C0E8B179214BB791007A1D29 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = G3CVB4GGF4;
+				INFOPLIST_FILE = Share/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		C0E8B18C214BC368007A1D29 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = G3CVB4GGF4;
+				INFOPLIST_FILE = PinBookmark/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = net.shanehudson.ARBookmarks.PinBookmark;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C0E8B18D214BC368007A1D29 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = G3CVB4GGF4;
+				INFOPLIST_FILE = PinBookmark/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = net.shanehudson.ARBookmarks.PinBookmark;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		C0E8B1A0214BC660007A1D29 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = G3CVB4GGF4;
+				INFOPLIST_FILE = "Add Bookmark/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "net.shanehudson.ARBookmarks.Add-Bookmark";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C0E8B1A1214BC660007A1D29 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = G3CVB4GGF4;
+				INFOPLIST_FILE = "Add Bookmark/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "net.shanehudson.ARBookmarks.Add-Bookmark";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -341,6 +648,33 @@
 			buildConfigurations = (
 				C08B5BFA214A43ED00516866 /* Debug */,
 				C08B5BFB214A43ED00516866 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C0E8B17A214BB791007A1D29 /* Build configuration list for PBXNativeTarget "Share" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C0E8B178214BB791007A1D29 /* Debug */,
+				C0E8B179214BB791007A1D29 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C0E8B18B214BC368007A1D29 /* Build configuration list for PBXNativeTarget "PinBookmark" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C0E8B18C214BC368007A1D29 /* Debug */,
+				C0E8B18D214BC368007A1D29 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C0E8B19F214BC660007A1D29 /* Build configuration list for PBXNativeTarget "Add Bookmark" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C0E8B1A0214BC660007A1D29 /* Debug */,
+				C0E8B1A1214BC660007A1D29 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
