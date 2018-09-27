@@ -8,9 +8,11 @@
 
 import SpriteKit
 import ARKit
+import CoreData
 
 class Scene: SKScene {
     var sight: SKSpriteNode!
+    let store = CoreDataStack.store
     
     override func didMove(to view: SKView) {
         sight = SKSpriteNode(imageNamed: "sight")
@@ -22,6 +24,11 @@ class Scene: SKScene {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        guard let sceneView = self.view as? ARSKView else {
+            return
+        }
+
         let location = sight.position
         
         // Get all objects hit by touch, ignore the first as that is the crosshair
@@ -32,7 +39,15 @@ class Scene: SKScene {
             let url = target.name!
             promptOpenURL(url: url, node: target)
         } else {
-            promptForURL()
+            
+            if let currentFrame = sceneView.session.currentFrame {
+                // Create a transform with a translation of 0.2 meters in front of the camera
+                var translation = matrix_identity_float4x4
+                translation.columns.3.z = -0.8
+                let transform = simd_mul(currentFrame.camera.transform, translation)
+
+                promptForURL(transform: transform)
+            }
         }
     }
     
@@ -58,37 +73,64 @@ class Scene: SKScene {
         view?.window?.rootViewController?.present(ac, animated: true)
     }
     
-    func promptForURL() {
+    func promptForURL(transform: matrix_float4x4) {
+        let ac = UIAlertController(title: "Place bookmark", message: nil, preferredStyle: .alert)
+        
+        let enterAction = UIAlertAction(title: "Enter URL", style: .default) { (action) -> Void in
+            self.promptEnterURL(transform: transform)
+        }
+        
+        let chooseAction = UIAlertAction(title: "Choose existing", style: .default) { (action) -> Void in
+            self.promptChooseURL(transform: transform)
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) -> Void in
+            print("Input: Adding URL cancelled")
+        }
+        
+        ac.addAction(enterAction)
+        ac.addAction(chooseAction)
+        ac.addAction(cancelAction)
+        view?.window?.rootViewController?.present(ac, animated: true, completion: nil)
+    }
+    
+    func promptEnterURL(transform: matrix_float4x4) {
         let ac = UIAlertController(title: "Enter URL", message: nil, preferredStyle: .alert)
-        ac.addTextField()
+        ac.addTextField(configurationHandler: { (textField) in
+            textField.keyboardType = UIKeyboardType.URL
+        })
         
         let submitAction = UIAlertAction(title: "Submit", style: .default) { [unowned ac] _ in
             let answer = ac.textFields![0]
             print("Input: Adding URL " + answer.text!)
-            self.addAnchor(url: URL(string: answer.text!)!)
+            self.addAnchor(url: URL(string: answer.text!)!, transform: transform)
+        }
+        
+        let backAction = UIAlertAction(title: "Back", style: .cancel) { [unowned ac] _ in
+            self.promptForURL(transform: transform)
         }
         
         ac.addAction(submitAction)
+        ac.addAction(backAction)
         view?.window?.rootViewController?.present(ac, animated: true, completion: nil)
     }
     
-    func addAnchor(url: URL) {
+    func promptChooseURL(transform: matrix_float4x4) {
+        self.store.fetchBookmarks()
+        let vc = view?.window?.rootViewController?.storyboard?.instantiateViewController(withIdentifier: "SecondView") as? BrowseViewController
+        view?.window?.rootViewController?.navigationController?.pushViewController(vc!, animated: true)
+        view?.window?.rootViewController?.performSegue(withIdentifier: "browse", sender: transform)
+    }
+    
+    func addAnchor(url: URL, transform: matrix_float4x4) {
+        
         guard let sceneView = self.view as? ARSKView else {
             return
         }
 
-        // Create anchor using the camera's current position
-        if let currentFrame = sceneView.session.currentFrame {
-            // Create a transform with a translation of 0.2 meters in front of the camera
-            var translation = matrix_identity_float4x4
-            translation.columns.3.z = -0.8
-            let transform = simd_mul(currentFrame.camera.transform, translation)
-
-
-            let anchor = URLAnchor(transform: transform)
-            anchor.url = url
-            sceneView.session.add(anchor: anchor)
-
-        }
+        // Create anchor using the given current position
+        let anchor = URLAnchor(transform: transform)
+        anchor.url = url
+        sceneView.session.add(anchor: anchor)
     }
 }

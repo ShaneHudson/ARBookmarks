@@ -2,14 +2,17 @@
 //  ShareViewController.swift
 //  Add Bookmark
 //
-//  Created by Shane Hudson on 14/09/2018.
+//  Created by Shane Hudson on 22/09/2018.
 //  Copyright © 2018 Shane Hudson. All rights reserved.
 //
 
 import UIKit
 import Social
+import CoreData
 
 class ShareViewController: SLComposeServiceViewController {
+    
+    let store = CoreDataStack.store
 
     override func isContentValid() -> Bool {
         // Do validation of contentText and/or NSExtensionContext attachments here
@@ -17,10 +20,20 @@ class ShareViewController: SLComposeServiceViewController {
     }
 
     override func didSelectPost() {
-        // This is called after the user selects Post. Do the upload of contentText and/or NSExtensionContext attachments.
-    
-        // Inform the host that we're done, so it un-blocks its UI. Note: Alternatively you could call super's -didSelectPost, which will similarly complete the extension context.
-        self.extensionContext!.completeRequest(returningItems: [], completionHandler: nil)
+        if let item = extensionContext?.inputItems.first as? NSExtensionItem {
+            if let attachments = item.attachments as? [NSItemProvider] {
+                for attachment: NSItemProvider in attachments {
+                    if attachment.hasItemConformingToTypeIdentifier("public.url") {
+                        attachment.loadItem(forTypeIdentifier: "public.url", options: nil, completionHandler: { (url, error) in
+                            if let shareURL = url as? NSURL {
+                                self.store.storeBookmark(withTitle: "Bookmark store", withURL: shareURL.absoluteURL!)
+                                self.extensionContext?.completeRequest(returningItems: [], completionHandler:nil)
+                            }
+                        })
+                    }
+                }
+            }
+        }
     }
 
     override func configurationItems() -> [Any]! {

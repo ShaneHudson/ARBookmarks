@@ -13,9 +13,28 @@ import ARKit
 class ViewController: UIViewController, ARSKViewDelegate {
     
     @IBOutlet var sceneView: ARSKView!
+
+    @IBAction func unwindToViewController(segue: UIStoryboardSegue) {
+        print("got to unwind " + (selected?.url?.absoluteString)!)
+        sceneView.session.add(anchor: (selected)!)
+    }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let segueID = segue.identifier
+        
+        if (segueID! == "browse") {
+            let yourVC:BrowseViewController = segue.destination as! BrowseViewController
+            yourVC.transform = sender as? matrix_float4x4
+        }
+    }
+    
+    let store = CoreDataStack.store
+    var selected:URLAnchor? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        store.fetchBookmarks()
         
         // Set the view's delegate
         sceneView.delegate = self
@@ -79,4 +98,5 @@ class ViewController: UIViewController, ARSKViewDelegate {
         // Reset tracking and/or remove existing anchors if consistent tracking is required
         
     }
+    
 }

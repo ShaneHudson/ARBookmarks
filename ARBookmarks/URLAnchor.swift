@@ -14,7 +14,12 @@ open class URLAnchor: ARAnchor {
         super.init(transform: transform)
     }
     
-    required public init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    required public init(anchor: ARAnchor) {
+        super.init(anchor: anchor)
     }
+    
+    required public init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
 }
