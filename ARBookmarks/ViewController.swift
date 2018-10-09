@@ -13,7 +13,8 @@ import ARKit
 class ViewController: UIViewController, ARSKViewDelegate {
     
     @IBOutlet var sceneView: ARSKView!
-
+    @IBOutlet weak var errorLabel: UILabel!
+    
     @IBAction func unwindToViewController(segue: UIStoryboardSegue) {
         print("got to unwind " + (selected?.url?.absoluteString)!)
         sceneView.session.add(anchor: (selected)!)
@@ -85,8 +86,7 @@ class ViewController: UIViewController, ARSKViewDelegate {
     }
     
     func session(_ session: ARSession, didFailWithError error: Error) {
-        // Present an error message to the user
-        
+        errorLabel.text = "Session failed: \(error.localizedDescription)"
     }
     
     func sessionWasInterrupted(_ session: ARSession) {

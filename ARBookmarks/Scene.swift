@@ -102,11 +102,13 @@ class Scene: SKScene {
         
         let submitAction = UIAlertAction(title: "Submit", style: .default) { [unowned ac] _ in
             let answer = ac.textFields![0]
-            print("Input: Adding URL " + answer.text!)
-            self.addAnchor(url: URL(string: answer.text!)!, transform: transform)
+            if (answer.text != "") {
+                print("Input: Adding URL " + answer.text!)
+                self.addAnchor(url: URL(string: answer.text!)!, transform: transform)
+            }
         }
         
-        let backAction = UIAlertAction(title: "Back", style: .cancel) { [unowned ac] _ in
+        let backAction = UIAlertAction(title: "Back", style: .cancel) { _ in
             self.promptForURL(transform: transform)
         }
         
