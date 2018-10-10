@@ -12,6 +12,7 @@ import ARKit
 class BrowseViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
+    var refreshControl: UIRefreshControl!
     
     let store = CoreDataStack.store
     let cellReuseIdentifier = "cell"
@@ -21,15 +22,28 @@ class BrowseViewController: UIViewController, UITableViewDelegate, UITableViewDa
     override func viewDidLoad() {
         super.viewDidLoad()
         store.fetchBookmarks()
-        
+    
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellReuseIdentifier)
+        
+        refreshControl = UIRefreshControl()
+        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        tableView.addSubview(refreshControl)
     }
     
     
+    @objc func refresh(_ sender: Any) {
+        self.store.fetchBookmarks()
+        self.tableView.reloadData()
+        refreshControl.endRefreshing()
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController!.navigationBar.isHidden = false
+        self.store.fetchBookmarks()
+        self.tableView.reloadData()
         super.viewWillAppear(animated)
     }
     
@@ -64,7 +78,8 @@ class BrowseViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let delete = UITableViewRowAction(style: .destructive, title: "Remove") { (action, indexPath) in
             self.store.delete(bookmark: self.store.fetchedBookmarks[indexPath.row])
-            tableView.reloadData()
+            self.store.fetchBookmarks()
+            self.tableView.reloadData()
         }
         return [delete]
     }

@@ -56,7 +56,11 @@ class Scene: SKScene {
         let ac = UIAlertController(title: url, message: "Do you want to open this URL in Safari?", preferredStyle: .alert)
         
         let submitAction = UIAlertAction(title: "Open", style: .default) { (action) -> Void in
-            UIApplication.shared.open(URL(string: url)!, options: [:])
+            var urlstring = url
+            if (URL(string: url)?.host == nil) {
+                urlstring = "https://\(url)"
+            }
+            UIApplication.shared.open(URL(string: urlstring)!, options: [:])
         }
 
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) -> Void in
