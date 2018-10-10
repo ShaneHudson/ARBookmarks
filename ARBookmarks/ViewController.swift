@@ -20,21 +20,12 @@ class ViewController: UIViewController, ARSKViewDelegate {
         sceneView.session.add(anchor: (selected)!)
     }
     
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let segueID = segue.identifier
-        
-        if (segueID! == "browse") {
-            let yourVC:BrowseViewController = segue.destination as! BrowseViewController
-            yourVC.transform = sender as? matrix_float4x4
-        }
-    }
-    
     let store = CoreDataStack.store
     var selected:URLAnchor? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController!.navigationBar.isHidden = true
         store.fetchBookmarks()
         
         // Set the view's delegate

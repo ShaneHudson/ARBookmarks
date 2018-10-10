@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BV1-FR-VrT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="nQ0-Yx-Dug">
     <device id="ipad9_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Main-->
+        <!--AR Bookmarks-->
         <scene sceneID="tXr-a1-R10">
             <objects>
-                <viewController title="Main" id="BV1-FR-VrT" customClass="ViewController" customModule="ARBookmarks" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="AR Bookmarks" id="BV1-FR-VrT" customClass="ViewController" customModule="ARBookmarks" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2fQ-od-6gb">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -35,20 +35,20 @@
                         <viewLayoutGuide key="safeArea" id="4Kv-bM-fzs"/>
                     </view>
                     <navigationItem key="navigationItem" id="wc8-GN-fHz"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="errorLabel" destination="hUM-XN-WoG" id="4nr-Nd-jPP"/>
                         <outlet property="sceneView" destination="nXx-JM-KzW" id="3eq-pl-mdT"/>
-                        <segue destination="ApV-9x-lhQ" kind="show" identifier="browse" id="DsF-0j-yH7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1603.125" y="46.875"/>
+            <point key="canvasLocation" x="2368.75" y="46.875"/>
         </scene>
-        <!--SecondView-->
+        <!--Browse-->
         <scene sceneID="tnL-tt-hdN">
             <objects>
-                <viewController storyboardIdentifier="SecondView" title="SecondView" modalPresentationStyle="overCurrentContext" id="ApV-9x-lhQ" customClass="BrowseViewController" customModule="ARBookmarks" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SecondView" title="Browse" modalPresentationStyle="overCurrentContext" id="ApV-9x-lhQ" customClass="BrowseViewController" customModule="ARBookmarks" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="c3M-7F-hvn">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -72,9 +72,6 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="MdP-wZ-8G3"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Title" id="eFu-xt-j1V">
-                        <barButtonItem key="backBarButtonItem" title="Back" id="s6S-dv-FNh"/>
-                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="ld7-Y6-wau" id="neZ-M8-h17"/>
                         <segue destination="C9z-gj-JDs" kind="unwind" identifier="unwindBrowse" unwindAction="unwindToViewControllerWithSegue:" id="75l-Mk-4OJ"/>
@@ -83,26 +80,27 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IRX-xe-V2X" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="C9z-gj-JDs" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2614.0625" y="46.875"/>
+            <point key="canvasLocation" x="3379.6875" y="46.875"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="KAp-VV-MCP">
+        <scene sceneID="cy2-7T-voH">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="2f2-ly-5vZ" sceneMemberID="viewController">
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gt1-ap-CZD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="nQ0-Yx-Dug" customClass="NavigationController" customModule="ARBookmarks" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="vqE-5D-6zs">
+                    <navigationItem key="navigationItem" id="y6n-2D-jtX"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="gJa-B1-whG">
                         <rect key="frame" x="0.0" y="20" width="768" height="50"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="BV1-FR-VrT" kind="relationship" relationship="rootViewController" id="4hb-GI-vFf"/>
+                        <segue destination="ApV-9x-lhQ" kind="show" identifier="browse" id="bRK-Fh-rJY"/>
+                        <segue destination="BV1-FR-VrT" kind="relationship" relationship="rootViewController" id="3us-go-hJH"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="9de-PT-Oij" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="837.5" y="46.875"/>
+            <point key="canvasLocation" x="1603.125" y="46.875"/>
         </scene>
     </scenes>
 </document>

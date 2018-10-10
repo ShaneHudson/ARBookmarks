@@ -29,10 +29,12 @@ class BrowseViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     
     override func viewWillAppear(_ animated: Bool) {
+        self.navigationController!.navigationBar.isHidden = false
         super.viewWillAppear(animated)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
+        self.navigationController!.navigationBar.isHidden = true
         super.viewWillDisappear(animated)
     }
     
@@ -61,11 +63,12 @@ class BrowseViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     // method to run when table view cell is tapped
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        let anchor = URLAnchor(transform: (transform)!)
-        anchor.url = store.fetchedBookmarks[indexPath.row].url
-        
-        self.performSegue(withIdentifier: "unwindBrowse", sender: anchor)
+        if (transform != nil && store.fetchedBookmarks[indexPath.row].url != nil) {
+            let anchor = URLAnchor(transform: (transform)!)
+            anchor.url = store.fetchedBookmarks[indexPath.row].url
+            
+            self.performSegue(withIdentifier: "unwindBrowse", sender: anchor)
+        }
     }
     
     

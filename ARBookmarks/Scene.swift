@@ -119,8 +119,6 @@ class Scene: SKScene {
     
     func promptChooseURL(transform: matrix_float4x4) {
         self.store.fetchBookmarks()
-        let vc = view?.window?.rootViewController?.storyboard?.instantiateViewController(withIdentifier: "SecondView") as? BrowseViewController
-        view?.window?.rootViewController?.navigationController?.pushViewController(vc!, animated: true)
         view?.window?.rootViewController?.performSegue(withIdentifier: "browse", sender: transform)
     }
     
