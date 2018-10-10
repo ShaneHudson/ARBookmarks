@@ -61,6 +61,14 @@ class BrowseViewController: UIViewController, UITableViewDelegate, UITableViewDa
         return cell
     }
     
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let delete = UITableViewRowAction(style: .destructive, title: "Remove") { (action, indexPath) in
+            self.store.delete(bookmark: self.store.fetchedBookmarks[indexPath.row])
+            tableView.reloadData()
+        }
+        return [delete]
+    }
+
     // method to run when table view cell is tapped
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if (transform != nil && store.fetchedBookmarks[indexPath.row].url != nil) {
