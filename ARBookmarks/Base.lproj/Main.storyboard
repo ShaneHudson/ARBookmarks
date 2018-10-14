@@ -57,9 +57,17 @@
                                 <rect key="frame" x="0.0" y="70" width="768" height="954"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <segmentedControl key="tableHeaderView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="oMD-2G-rEf">
+                                    <rect key="frame" x="0.0" y="0.0" width="768" height="30"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <segments>
+                                        <segment title="Not Placed"/>
+                                        <segment title="Placed"/>
+                                    </segments>
+                                </segmentedControl>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="tpI-as-tL8">
-                                        <rect key="frame" x="0.0" y="28" width="768" height="44"/>
+                                        <rect key="frame" x="0.0" y="58" width="768" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="tpI-as-tL8" id="WDs-nT-nD0">
                                             <rect key="frame" x="0.0" y="0.0" width="768" height="43.5"/>
@@ -85,7 +93,6 @@
         <!--Navigation Controller-->
         <scene sceneID="cy2-7T-voH">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="gt1-ap-CZD" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="nQ0-Yx-Dug" customClass="NavigationController" customModule="ARBookmarks" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="y6n-2D-jtX"/>
@@ -99,6 +106,7 @@
                         <segue destination="BV1-FR-VrT" kind="relationship" relationship="rootViewController" id="3us-go-hJH"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gt1-ap-CZD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1603.125" y="46.875"/>
         </scene>
