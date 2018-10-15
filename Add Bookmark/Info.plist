@@ -17,27 +17,27 @@
 	<key>CFBundlePackageType</key>
 	<string>XPC!</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0</string>
+	<string>0.6.1</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>NSExtension</key>
 	<dict>
+		<key>NSExtensionAttributes</key>
+		<dict>
+			<key>NSExtensionActivationRule</key>
+			<dict>
+				<key>NSExtensionActivationDictionaryVersion</key>
+				<integer>2</integer>
+				<key>NSExtensionActivationSupportsText</key>
+				<true/>
+				<key>NSExtensionActivationSupportsWebPageWithMaxCount</key>
+				<integer>1</integer>
+			</dict>
+		</dict>
 		<key>NSExtensionMainStoryboard</key>
 		<string>MainInterface</string>
 		<key>NSExtensionPointIdentifier</key>
 		<string>com.apple.share-services</string>
-	</dict>
-	<key>NSExtensionAttributes</key>
-	<dict>
-		<key>NSExtensionActivationRule</key>
-		<dict>
-			<key>NSExtensionActivationDictionaryVersion</key>
-			<integer>2</integer>
-			<key>NSExtensionActivationSupportsText</key>
-			<string>YES</string>
-			<key>NSExtensionActivationSupportsWebPageWithMaxCount</key>
-			<integer>1</integer>
-		</dict>
 	</dict>
 </dict>
 </plist>
