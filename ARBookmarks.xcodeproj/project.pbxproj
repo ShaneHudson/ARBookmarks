@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C012D09A216E2FEB00841CE4 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C012D099216E2FEB00841CE4 /* NavigationController.swift */; };
+		C015C8B02173E43E002406B8 /* Add Bookmark.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = C083461F21568B9B000761D4 /* Add Bookmark.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		C0520ED32156FCB300651A5C /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = C006ECCB2156F0060084E80F /* CoreDataStack.swift */; };
 		C0520ED62156FCC400651A5C /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = C006ECCB2156F0060084E80F /* CoreDataStack.swift */; };
 		C0520ED72156FCC400651A5C /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C083462121568B9B000761D4 /* ShareViewController.swift */; };
@@ -17,7 +18,6 @@
 		C0520EDF2156FF0500651A5C /* Bookmark+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0520EDB2156FF0500651A5C /* Bookmark+CoreDataProperties.swift */; };
 		C0575BB4215A0EB2003E715E /* BrowseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0575BB3215A0EB2003E715E /* BrowseViewController.swift */; };
 		C083462521568B9B000761D4 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C083462321568B9B000761D4 /* MainInterface.storyboard */; };
-		C083462921568B9B000761D4 /* Add Bookmark.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = C083461F21568B9B000761D4 /* Add Bookmark.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		C083462E21568BC1000761D4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C083462D21568BC1000761D4 /* Assets.xcassets */; };
 		C08346312156A105000761D4 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C083462F2156A105000761D4 /* Model.xcdatamodeld */; };
 		C083464D2156A46C000761D4 /* Model.xcdatamodeld in Resources */ = {isa = PBXBuildFile; fileRef = C083462F2156A105000761D4 /* Model.xcdatamodeld */; };
@@ -32,7 +32,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		C0520ED82156FDEE00651A5C /* PBXContainerItemProxy */ = {
+		C015C8B12173E43E002406B8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = C08B5BDB214A43EC00516866 /* Project object */;
 			proxyType = 1;
@@ -42,13 +42,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		C0E8B18E214BC368007A1D29 /* Embed App Extensions */ = {
+		C015C8B32173E43E002406B8 /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				C083462921568B9B000761D4 /* Add Bookmark.appex in Embed App Extensions */,
+				C015C8B02173E43E002406B8 /* Add Bookmark.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -179,12 +179,12 @@
 				C08B5BDF214A43EC00516866 /* Sources */,
 				C08B5BE0214A43EC00516866 /* Frameworks */,
 				C08B5BE1214A43EC00516866 /* Resources */,
-				C0E8B18E214BC368007A1D29 /* Embed App Extensions */,
+				C015C8B32173E43E002406B8 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				C0520ED92156FDEE00651A5C /* PBXTargetDependency */,
+				C015C8B22173E43E002406B8 /* PBXTargetDependency */,
 			);
 			name = ARBookmarks;
 			productName = ARBookmarks;
@@ -203,6 +203,7 @@
 				TargetAttributes = {
 					C083461E21568B9B000761D4 = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1000;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
@@ -211,6 +212,7 @@
 					};
 					C08B5BE2214A43EC00516866 = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1000;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
@@ -294,10 +296,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		C0520ED92156FDEE00651A5C /* PBXTargetDependency */ = {
+		C015C8B22173E43E002406B8 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = C083461E21568B9B000761D4 /* Add Bookmark */;
-			targetProxy = C0520ED82156FDEE00651A5C /* PBXContainerItemProxy */;
+			targetProxy = C015C8B12173E43E002406B8 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -345,7 +347,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "net.shanehudson.ARBookmarks.Add-Bookmark";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -366,7 +368,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "net.shanehudson.ARBookmarks.Add-Bookmark";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -501,7 +503,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = net.shanehudson.ARBookmarks;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -522,7 +524,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = net.shanehudson.ARBookmarks;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

@@ -21,7 +21,7 @@ class ShareViewController: SLComposeServiceViewController {
 
     override func didSelectPost() {
         if let item = extensionContext?.inputItems.first as? NSExtensionItem {
-            if let attachments = item.attachments as? [NSItemProvider] {
+            if let attachments = item.attachments {
                 for attachment: NSItemProvider in attachments {
                     if attachment.hasItemConformingToTypeIdentifier("public.url") {
                         attachment.loadItem(forTypeIdentifier: "public.url", options: nil, completionHandler: { (url, error) in
