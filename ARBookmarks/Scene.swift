@@ -122,7 +122,7 @@ class Scene: SKScene {
     }
     
     func promptChooseURL(transform: matrix_float4x4) {
-        self.store.fetchBookmarks()
+        self.store.fetchNonPlacedBookmarks()
         view?.window?.rootViewController?.performSegue(withIdentifier: "browse", sender: transform)
     }
     
@@ -135,6 +135,7 @@ class Scene: SKScene {
         // Create anchor using the given current position
         let anchor = URLAnchor(transform: transform)
         anchor.url = url
+        self.store.storeBookmark(withTitle: "Bookmark store", withURL: url.absoluteURL, isPlaced: true)
         sceneView.session.add(anchor: anchor)
     }
 }

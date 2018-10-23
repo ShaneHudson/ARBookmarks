@@ -64,6 +64,9 @@
                                         <segment title="Not Placed"/>
                                         <segment title="Placed"/>
                                     </segments>
+                                    <connections>
+                                        <action selector="SegmentedControllButtonClickAction:" destination="ApV-9x-lhQ" eventType="valueChanged" id="fWz-gR-we2"/>
+                                    </connections>
                                 </segmentedControl>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="tpI-as-tL8">
@@ -81,6 +84,7 @@
                         <viewLayoutGuide key="safeArea" id="MdP-wZ-8G3"/>
                     </view>
                     <connections>
+                        <outlet property="segmentToggle" destination="oMD-2G-rEf" id="NfP-5n-geN"/>
                         <outlet property="tableView" destination="ld7-Y6-wau" id="neZ-M8-h17"/>
                         <segue destination="C9z-gj-JDs" kind="unwind" identifier="unwindBrowse" unwindAction="unwindToViewControllerWithSegue:" id="75l-Mk-4OJ"/>
                     </connections>

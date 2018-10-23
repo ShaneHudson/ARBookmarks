@@ -16,15 +16,23 @@ final class CoreDataStack {
     
     var fetchedBookmarks = [Bookmark]()
     
-    func storeBookmark(withTitle title: String, withURL url: URL) {
+    func storeBookmark(withTitle title: String, withURL url: URL, isPlaced: Bool?) {
         let bookmark = Bookmark(context: context)
         bookmark.title = title
         bookmark.url = url
+        bookmark.isPlaced = isPlaced ?? false
         try! context.save()
     }
 
-    func fetchBookmarks() {
+    func fetchPlacedBookmarks() {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Bookmark")
+        fetchRequest.predicate = NSPredicate(format: "isPlaced == true")
+        self.fetchedBookmarks = try! context.fetch(fetchRequest) as! [Bookmark]
+    }
+    
+    func fetchNonPlacedBookmarks() {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Bookmark")
+        fetchRequest.predicate = NSPredicate(format: "isPlaced == false")
         self.fetchedBookmarks = try! context.fetch(fetchRequest) as! [Bookmark]
     }
     

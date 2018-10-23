@@ -17,11 +17,17 @@ class BrowseViewController: UIViewController, UITableViewDelegate, UITableViewDa
     let store = CoreDataStack.store
     let cellReuseIdentifier = "cell"
     
+    @IBOutlet weak var segmentToggle: UISegmentedControl!
+    
+    @IBAction func SegmentedControllButtonClickAction(_ sender: UISegmentedControl) {
+        self.fetchBookmarks()
+    }
+    
     var transform:matrix_float4x4? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        store.fetchBookmarks()
+        self.fetchBookmarks()
     
         tableView.dataSource = self
         tableView.delegate = self
@@ -33,17 +39,25 @@ class BrowseViewController: UIViewController, UITableViewDelegate, UITableViewDa
         tableView.addSubview(refreshControl)
     }
     
+    func fetchBookmarks() {
+        if (segmentToggle.selectedSegmentIndex == 0) {
+            self.store.fetchNonPlacedBookmarks()
+        }
+        else {
+            self.store.fetchPlacedBookmarks()
+        }
+        self.tableView.reloadData()
+    }
+    
     
     @objc func refresh(_ sender: Any) {
-        self.store.fetchBookmarks()
-        self.tableView.reloadData()
+        self.fetchBookmarks()
         refreshControl.endRefreshing()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController!.navigationBar.isHidden = false
-        self.store.fetchBookmarks()
-        self.tableView.reloadData()
+        self.fetchBookmarks()
         super.viewWillAppear(animated)
     }
     
@@ -71,15 +85,13 @@ class BrowseViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         // set the text from the data model
         cell.textLabel?.text = store.fetchedBookmarks[indexPath.row].url?.absoluteString
-        
         return cell
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let delete = UITableViewRowAction(style: .destructive, title: "Remove") { (action, indexPath) in
             self.store.delete(bookmark: self.store.fetchedBookmarks[indexPath.row])
-            self.store.fetchBookmarks()
-            self.tableView.reloadData()
+            self.fetchBookmarks()
         }
         return [delete]
     }
@@ -88,8 +100,13 @@ class BrowseViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if (transform != nil && store.fetchedBookmarks[indexPath.row].url != nil) {
             let anchor = URLAnchor(transform: (transform)!)
-            anchor.url = store.fetchedBookmarks[indexPath.row].url
-            
+            let bookmark = store.fetchedBookmarks[indexPath.row]
+            anchor.url = bookmark.url
+            if (segmentToggle.selectedSegmentIndex == 0) {
+                // This makes sure it only moves from unplaced to placed if unplaced to begin with
+                self.store.delete(bookmark: bookmark)
+                self.store.storeBookmark(withTitle: "Bookmark store", withURL: (anchor.url?.absoluteURL)!, isPlaced: true)
+            }
             self.performSegue(withIdentifier: "unwindBrowse", sender: anchor)
         }
     }
@@ -104,3 +121,4 @@ class BrowseViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
     }
 }
+s

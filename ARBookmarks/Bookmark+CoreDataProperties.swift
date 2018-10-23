@@ -19,5 +19,5 @@ extension Bookmark {
 
     @NSManaged public var title: String?
     @NSManaged public var url: URL?
-
+    @NSManaged public var isPlaced: Bool
 }

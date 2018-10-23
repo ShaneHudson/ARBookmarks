@@ -26,7 +26,7 @@ class ViewController: UIViewController, ARSKViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController!.navigationBar.isHidden = true
-        store.fetchBookmarks()
+        store.fetchNonPlacedBookmarks()
         
         // Set the view's delegate
         sceneView.delegate = self
