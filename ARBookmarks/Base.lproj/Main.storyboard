@@ -69,13 +69,8 @@
                                     </connections>
                                 </segmentedControl>
                                 <prototypes>
-<<<<<<< HEAD
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="tpI-as-tL8">
-                                        <rect key="frame" x="0.0" y="58" width="768" height="44"/>
-=======
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="urlcell" id="tpI-as-tL8">
                                         <rect key="frame" x="0.0" y="28" width="768" height="44"/>
->>>>>>> master
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="tpI-as-tL8" id="WDs-nT-nD0">
                                             <rect key="frame" x="0.0" y="0.0" width="768" height="43.5"/>
