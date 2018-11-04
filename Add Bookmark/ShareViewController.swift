@@ -13,46 +13,33 @@ import CoreData
 class ShareViewController: UIViewController {
     
     let store = CoreDataStack.store
-    var cancelled = false
-    var complete = false
-    @IBOutlet weak var statusLabel: UILabel!
-    @IBOutlet weak var actionLabel: UIButton!
-    
-    func isContentValid() -> Bool {
-        // Do validation of contentText and/or NSExtensionContext attachments here
-        return true
-    }
-
-    @IBAction func button(_ sender: UIButton) {
-        if (complete == false) {
-            cancelled = true
-            self.statusLabel.text = "Cancelled"
-            self.actionLabel.isHidden = true
-        }
-        self.extensionContext?.completeRequest(returningItems: [], completionHandler:nil)
-    }
     
     override func viewDidLoad() {
-        didSelectPost()
+        
+        let ac = UIAlertController(title: "Save to AR Bookmarks?", message: "", preferredStyle: .alert)
+        
+        let confirmAction = UIAlertAction(title: "Yes", style: .default) { (action) -> Void in
+            self.didSelectPost()
+        }
+        
+        let cancelAction = UIAlertAction(title: "No", style: .cancel) { (action) -> Void in
+            self.extensionContext?.completeRequest(returningItems: [], completionHandler:nil)
+        }
+        
+        ac.addAction(confirmAction)
+        ac.addAction(cancelAction)
+        self.present(ac, animated: true)
     }
     
     func didSelectPost() {
-        self.statusLabel.text = "Sending to AR Bookmarks"
-        self.actionLabel.setTitle("Cancel", for: .normal)
-        
         if let item = self.extensionContext?.inputItems.first as? NSExtensionItem {
             if let attachments = item.attachments {
                 for attachment: NSItemProvider in attachments {
                     if attachment.hasItemConformingToTypeIdentifier("public.url") {
                         attachment.loadItem(forTypeIdentifier: "public.url", options: nil, completionHandler: { (url, error) in
                             if let shareURL = url as? NSURL {
-                                if (self.cancelled == false) {
-                                    
-                                    self.store.storeBookmark(withTitle: "Bookmark store", withURL: shareURL.absoluteURL!, isPlaced: false)
-                                    self.statusLabel.text = "Sent to AR Bookmarks"
-                                    self.complete = true
-                                    self.actionLabel.setTitle("Done", for: .normal)
-                                }
+                                self.store.storeBookmark(withTitle: "Bookmark store", withURL: shareURL.absoluteURL!, isPlaced: false)
+                                self.extensionContext?.completeRequest(returningItems: [], completionHandler:nil)
                             }
                         })
                     }

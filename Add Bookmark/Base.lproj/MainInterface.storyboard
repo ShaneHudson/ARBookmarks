@@ -17,50 +17,8 @@
                     <view key="view" autoresizesSubviews="NO" opaque="NO" contentMode="scaleToFill" id="wbc-yd-nQP">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="1oL-l9-Z0D">
-                                <rect key="frame" x="67" y="338.66666666666669" width="241" height="145"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WXx-Mm-I7X">
-                                        <rect key="frame" x="96" y="93" width="49" height="30"/>
-                                        <state key="normal" title="Cancel"/>
-                                        <connections>
-                                            <action selector="button:" destination="j1y-V4-xli" eventType="touchUpInside" id="xDx-RZ-Tlr"/>
-                                        </connections>
-                                    </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sending to AR Bookmarks" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9KI-wF-sXN">
-                                        <rect key="frame" x="21" y="37" width="199" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstItem="9KI-wF-sXN" firstAttribute="centerX" secondItem="1oL-l9-Z0D" secondAttribute="centerX" id="0iL-BS-e8r"/>
-                                    <constraint firstItem="WXx-Mm-I7X" firstAttribute="centerX" secondItem="1oL-l9-Z0D" secondAttribute="centerX" id="4Td-xT-JU0"/>
-                                    <constraint firstItem="WXx-Mm-I7X" firstAttribute="centerY" secondItem="1oL-l9-Z0D" secondAttribute="centerY" constant="35.5" id="OG2-pq-0jC"/>
-                                    <constraint firstItem="WXx-Mm-I7X" firstAttribute="leading" secondItem="1oL-l9-Z0D" secondAttribute="leading" constant="96" id="OYO-yv-6kI"/>
-                                    <constraint firstItem="9KI-wF-sXN" firstAttribute="leading" secondItem="1oL-l9-Z0D" secondAttribute="leading" constant="21" id="QUD-aK-MZo"/>
-                                    <constraint firstItem="WXx-Mm-I7X" firstAttribute="top" secondItem="9KI-wF-sXN" secondAttribute="bottom" constant="35" id="ZPn-xd-jLD"/>
-                                    <constraint firstAttribute="height" constant="145" id="bwM-gZ-qyC"/>
-                                    <constraint firstAttribute="width" constant="241" id="eGm-ZU-GCR"/>
-                                    <constraint firstItem="9KI-wF-sXN" firstAttribute="centerX" secondItem="1oL-l9-Z0D" secondAttribute="centerX" id="oqE-5a-uuo"/>
-                                    <constraint firstItem="9KI-wF-sXN" firstAttribute="centerX" secondItem="1oL-l9-Z0D" secondAttribute="centerX" id="vzp-86-W9b"/>
-                                </constraints>
-                            </view>
-                        </subviews>
-                        <constraints>
-                            <constraint firstItem="1oL-l9-Z0D" firstAttribute="centerX" secondItem="1Xd-am-t49" secondAttribute="centerX" id="IBd-dd-JYM"/>
-                            <constraint firstItem="1oL-l9-Z0D" firstAttribute="centerY" secondItem="1Xd-am-t49" secondAttribute="centerY" id="bNv-ew-YnM"/>
-                            <constraint firstItem="1oL-l9-Z0D" firstAttribute="centerX" secondItem="wbc-yd-nQP" secondAttribute="centerX" id="uWq-NT-1YY"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="1Xd-am-t49"/>
                     </view>
-                    <connections>
-                        <outlet property="actionLabel" destination="WXx-Mm-I7X" id="cqG-yw-LPK"/>
-                        <outlet property="statusLabel" destination="9KI-wF-sXN" id="lb3-Ka-HmS"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CEy-Cv-SGf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
