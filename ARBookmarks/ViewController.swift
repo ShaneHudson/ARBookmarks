@@ -9,6 +9,8 @@
 import UIKit
 import SpriteKit
 import ARKit
+import FavIcon
+
 
 class ViewController: UIViewController, ARSKViewDelegate {
     
@@ -32,8 +34,8 @@ class ViewController: UIViewController, ARSKViewDelegate {
         sceneView.delegate = self
         
         // Show statistics such as fps and node count
-        sceneView.showsFPS = true
-        sceneView.showsNodeCount = true
+//        sceneView.showsFPS = true
+//        sceneView.showsNodeCount = true
         
         // Load the SKScene from 'Scene.sks'
         if let scene = SKScene(fileNamed: "Scene") {
@@ -46,7 +48,7 @@ class ViewController: UIViewController, ARSKViewDelegate {
         
         // Create a session configuration
         let configuration = ARWorldTrackingConfiguration()
-
+//        configuration.planeDetection = [.vertical, .horizontal]
         // Run the view's session
         sceneView.session.run(configuration)
     }
@@ -66,14 +68,33 @@ class ViewController: UIViewController, ARSKViewDelegate {
     // MARK: - ARSKViewDelegate
     
     func view(_ view: ARSKView, nodeFor anchor: ARAnchor) -> SKNode? {
-        // Create and configure a node for the anchor added to the view's session.
-        let labelNode = SKLabelNode(text: "🔗")
-        labelNode.horizontalAlignmentMode = .center
-        labelNode.verticalAlignmentMode = .center
+//        let labelNode = SKLabelNode(text: "🔗")
+//        labelNode.horizontalAlignmentMode = .center
+//        labelNode.verticalAlignmentMode = .center
+        var labelNode:SKSpriteNode = SKSpriteNode()
+        var url:String = ""
+        
         if let urlanchor = anchor as? URLAnchor {
-            labelNode.name = urlanchor.url?.absoluteString
+            url = (urlanchor.url?.absoluteString)!
+            labelNode.name = url
         }
-        return labelNode;
+        
+        do {
+            try FavIcon.downloadPreferred(url, width: 200, height: 200, completion: { (result) in
+                if case let .success(image) = result {
+                    let Texture = SKTexture(image: image)
+                    
+                    labelNode.texture = Texture
+                    labelNode.size = CGSize(width: 50, height: 50)
+                } else if case let .failure(error) = result {
+                    print("failed to download preferred favicon for \(url): \(error)")
+                }
+            })
+        } catch let error {
+            print("failed to download preferred favicon for \(url): \(error)")
+        }
+        
+        return labelNode
     }
     
     func session(_ session: ARSession, didFailWithError error: Error) {

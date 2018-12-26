@@ -11,10 +11,10 @@ import ARKit
 import CoreData
 
 class Scene: SKScene {
-    var sight: SKSpriteNode!
+    var sight: SKNode!
     let store = CoreDataStack.store
     
-    override func didMove(to view: SKView) {
+    override func sceneDidLoad() {
         sight = SKSpriteNode(imageNamed: "sight")
         addChild(sight)
     }
@@ -35,15 +35,15 @@ class Scene: SKScene {
         let targets = nodes(at: location).dropFirst()
         
         if (targets.count > 0) {
-            let target = targets.first as! SKLabelNode
-            let url = target.name!
-            promptOpenURL(url: url, node: target)
+            let target = targets.first
+            let url = target!.name!
+            promptOpenURL(url: url, node: target!)
         } else {
             
             if let currentFrame = sceneView.session.currentFrame {
                 // Create a transform with a translation of 0.2 meters in front of the camera
                 var translation = matrix_identity_float4x4
-                translation.columns.3.z = -0.8
+                translation.columns.3.z = -0.3
                 let transform = simd_mul(currentFrame.camera.transform, translation)
 
                 promptForURL(transform: transform)
@@ -51,7 +51,7 @@ class Scene: SKScene {
         }
     }
     
-    func promptOpenURL(url: String, node: SKLabelNode) {
+    func promptOpenURL(url: String, node: SKNode) {
         print("Input: Opening URL " + url)
         let ac = UIAlertController(title: url, message: "Do you want to open this URL in Safari?", preferredStyle: .alert)
         
