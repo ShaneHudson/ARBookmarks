@@ -9,6 +9,8 @@
 import SpriteKit
 import ARKit
 import CoreData
+import Fabric
+import Crashlytics
 
 class Scene: SKScene {
     var sight: SKNode!
@@ -68,6 +70,12 @@ class Scene: SKScene {
         }
 
         let removeAction = UIAlertAction(title: "Remove", style: .destructive) { (action) -> Void in
+            self.store.getCount()
+            Answers.logCustomEvent(withName: "Unplaced Bookmark", customAttributes: [
+                "Total bookmarks": self.store.totalBookmarks,
+                "Placed bookmarks": self.store.placedBookmarks,
+                "Unplaced bookmarks": self.store.unplacedBookmarks,
+            ] )
             node.removeFromParent()
         }
         
@@ -135,7 +143,16 @@ class Scene: SKScene {
         // Create anchor using the given current position
         let anchor = URLAnchor(transform: transform)
         anchor.url = url
+        
         self.store.storeBookmark(withTitle: "Bookmark store", withURL: url.absoluteURL, isPlaced: true)
+        
+        self.store.getCount()
+        Answers.logCustomEvent(withName: "Placed Bookmark", customAttributes: [
+            "Total bookmarks": store.totalBookmarks,
+            "Placed bookmarks": store.placedBookmarks,
+            "Unplaced bookmarks": store.unplacedBookmarks,
+        ] )
+
         sceneView.session.add(anchor: anchor)
     }
 }

@@ -1,27 +1,53 @@
 import Foundation
 import CoreData
 
-
 final class CoreDataStack {
     
     
     static let store = CoreDataStack()
     private init() {}
     
-    
     var context: NSManagedObjectContext {
         return persistentContainer.viewContext
     }
     
-    
     var fetchedBookmarks = [Bookmark]()
+    var totalBookmarks = 0
+    var placedBookmarks = 0
+    var unplacedBookmarks = 0
     
     func storeBookmark(withTitle title: String, withURL url: URL, isPlaced: Bool?) {
         let bookmark = Bookmark(context: context)
         bookmark.title = title
         bookmark.url = url
         bookmark.isPlaced = isPlaced ?? false
+        
         try! context.save()
+    }
+    
+    func getCount() {
+        self.bookmarksCount()
+        self.placedBookmarksCount()
+        self.unplacedBookmarksCount()
+    }
+    func bookmarksCount() {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Bookmark")
+        let bookmarks = try! context.fetch(fetchRequest) as! [Bookmark]
+        self.totalBookmarks = bookmarks.count
+    }
+    
+    func placedBookmarksCount() {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Bookmark")
+        fetchRequest.predicate = NSPredicate(format: "isPlaced == true")
+        let bookmarks = try! context.fetch(fetchRequest) as! [Bookmark]
+        self.placedBookmarks = bookmarks.count
+    }
+    
+    func unplacedBookmarksCount() {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Bookmark")
+        fetchRequest.predicate = NSPredicate(format: "isPlaced == false")
+        let bookmarks = try! context.fetch(fetchRequest) as! [Bookmark]
+        self.unplacedBookmarks = bookmarks.count
     }
 
     func fetchPlacedBookmarks() {

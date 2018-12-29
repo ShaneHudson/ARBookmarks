@@ -8,4 +8,6 @@ target 'ARBookmarks' do
 
   # Pods for ARBookmarks
   pod 'FavIcon', '~> 3.0.0'
+  pod 'Fabric'
+  pod 'Crashlytics'
 end

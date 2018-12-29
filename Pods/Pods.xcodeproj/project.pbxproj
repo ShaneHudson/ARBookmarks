@@ -3,23 +3,23 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 46;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		071C611E36717416841038B5A89AE0B7 /* Pods-ARBookmarks-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E438616331174CE64332A53B410F9E /* Pods-ARBookmarks-dummy.m */; };
-		13665FB9C7417EBBF0CABDA5DFD0A67D /* Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05DA8E99DA426F438B6436E7AFBB0B4E /* Icon.swift */; };
+		13665FB9C7417EBBF0CABDA5DFD0A67D /* Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = B104DD04FA33410888F9F1F13602CA77 /* Icon.swift */; };
 		142291CBFA9D4A77C8555DE2007C0670 /* Pods-ARBookmarks-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 5078B21627FF63FAEF3DB6FB5D34591B /* Pods-ARBookmarks-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		1AE4232C7C52B90A15005C4A5AD73AE5 /* FavIcon-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = E0CEB5046C3ACB93073A54B936C19B0B /* FavIcon-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		313C0F10BAE87AD8969F692B4FF4CF63 /* Download.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCDABAA0866D7649F59E18A885B8EFC /* Download.swift */; };
+		1AE4232C7C52B90A15005C4A5AD73AE5 /* FavIcon-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 4589A74C39E0120594DE8A939489208C /* FavIcon-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		313C0F10BAE87AD8969F692B4FF4CF63 /* Download.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81F49E52F2452F0DDAB5588C25E95DE7 /* Download.swift */; };
 		3DBD0E513735399711E3121F09B77DCB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6DFF15000AFE2A371BF499E7AFDA808 /* Foundation.framework */; };
-		409992B8ED6BF09E59B27A862E261998 /* Detection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BB31016568C051580BA5FD6CF7123F2 /* Detection.swift */; };
-		56B3A9B73355ADE023D13C07DC375796 /* FavIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CE3060E1AD1916FDDBA0772A4E64E8A /* FavIcon.swift */; };
-		86FDD7BFD67886E08BD1B182DCC248C2 /* XML.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107565612C0F75D50070BFD04DC8B938 /* XML.swift */; };
-		93320BC36F5C77F1D4C1B43391BAF314 /* HTML.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717D8811B1EA5FC6C57B68A359EA6FBF /* HTML.swift */; };
-		B6932261F6ACE48C5139A0D1B695540E /* ContentTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE1FCB52259F82B0700A4EA759ECC7F /* ContentTypes.swift */; };
-		D3D6A1C1E050F387ACC5DF1987FAB883 /* FavIcon-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 183103FC538A1ED6A9C319FA4C89B096 /* FavIcon-dummy.m */; };
-		E569E3344D64C9EA13302C4592B7E496 /* IconType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5137AD0DAD153FCB243BEEE733561B57 /* IconType.swift */; };
+		409992B8ED6BF09E59B27A862E261998 /* Detection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 672D10E61C2133BCA5F8AD904426DB47 /* Detection.swift */; };
+		56B3A9B73355ADE023D13C07DC375796 /* FavIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A311BB076E1597C97EC814BDCBF2573 /* FavIcon.swift */; };
+		86FDD7BFD67886E08BD1B182DCC248C2 /* XML.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AE22D6F0D2E0D979D27188AE6D5A037 /* XML.swift */; };
+		93320BC36F5C77F1D4C1B43391BAF314 /* HTML.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079B57D60778954F6B5332B554523D65 /* HTML.swift */; };
+		B6932261F6ACE48C5139A0D1B695540E /* ContentTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB07CF93858EB584588D4CC120647E0E /* ContentTypes.swift */; };
+		D3D6A1C1E050F387ACC5DF1987FAB883 /* FavIcon-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 800C43447227A2959DEC9CE7B8ED463D /* FavIcon-dummy.m */; };
+		E569E3344D64C9EA13302C4592B7E496 /* IconType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A5E4EB98877A1CBD7E217943047AAD /* IconType.swift */; };
 		FB517B0145E52360A3F0BC1E315CCCA9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6DFF15000AFE2A371BF499E7AFDA808 /* Foundation.framework */; };
 /* End PBXBuildFile section */
 
@@ -35,33 +35,44 @@
 
 /* Begin PBXFileReference section */
 		041BC1A51F61B3FC7D5839705B042C3A /* Pods-ARBookmarks-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ARBookmarks-frameworks.sh"; sourceTree = "<group>"; };
-		05DA8E99DA426F438B6436E7AFBB0B4E /* Icon.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Icon.swift; path = Sources/FavIcon/Icon.swift; sourceTree = "<group>"; };
-		107565612C0F75D50070BFD04DC8B938 /* XML.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = XML.swift; path = Sources/FavIcon/XML.swift; sourceTree = "<group>"; };
+		05B9BBA60B8D70F72259E8DA556B89E6 /* CLSStackFrame.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CLSStackFrame.h; path = iOS/Crashlytics.framework/Headers/CLSStackFrame.h; sourceTree = "<group>"; };
+		079B57D60778954F6B5332B554523D65 /* HTML.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HTML.swift; path = Sources/FavIcon/HTML.swift; sourceTree = "<group>"; };
+		088924A533CD5FA6BCBF7935D37FD6DC /* FABAttributes.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FABAttributes.h; path = iOS/Fabric.framework/Headers/FABAttributes.h; sourceTree = "<group>"; };
 		16E1C585B241D7D6E95E2450DFB9E5F4 /* Pods-ARBookmarks.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-ARBookmarks.modulemap"; sourceTree = "<group>"; };
-		183103FC538A1ED6A9C319FA4C89B096 /* FavIcon-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "FavIcon-dummy.m"; sourceTree = "<group>"; };
+		2AE22D6F0D2E0D979D27188AE6D5A037 /* XML.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = XML.swift; path = Sources/FavIcon/XML.swift; sourceTree = "<group>"; };
+		2EEED92F7EFC10EE835F5C75422CED07 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Crashlytics.framework; path = iOS/Crashlytics.framework; sourceTree = "<group>"; };
 		35B71E8D5580A25C8D88C56121938EDF /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4DE1FCB52259F82B0700A4EA759ECC7F /* ContentTypes.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ContentTypes.swift; path = Sources/FavIcon/ContentTypes.swift; sourceTree = "<group>"; };
+		37D493283909293213F95136371C1224 /* Answers.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Answers.h; path = iOS/Crashlytics.framework/Headers/Answers.h; sourceTree = "<group>"; };
+		39A755771A959AD9DAA5D07B47BEAAAA /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4589A74C39E0120594DE8A939489208C /* FavIcon-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FavIcon-umbrella.h"; sourceTree = "<group>"; };
+		4A311BB076E1597C97EC814BDCBF2573 /* FavIcon.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FavIcon.swift; path = Sources/FavIcon/FavIcon.swift; sourceTree = "<group>"; };
 		5078B21627FF63FAEF3DB6FB5D34591B /* Pods-ARBookmarks-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-ARBookmarks-umbrella.h"; sourceTree = "<group>"; };
-		5137AD0DAD153FCB243BEEE733561B57 /* IconType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IconType.swift; path = Sources/FavIcon/IconType.swift; sourceTree = "<group>"; };
-		5CCDABAA0866D7649F59E18A885B8EFC /* Download.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Download.swift; path = Sources/FavIcon/Download.swift; sourceTree = "<group>"; };
+		56FAD7DAF942A468F651DA33CADF0A2F /* FavIcon.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = FavIcon.modulemap; sourceTree = "<group>"; };
+		62EC6612B96A4B6B95B2E7F1C130A242 /* CLSAttributes.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CLSAttributes.h; path = iOS/Crashlytics.framework/Headers/CLSAttributes.h; sourceTree = "<group>"; };
+		672D10E61C2133BCA5F8AD904426DB47 /* Detection.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Detection.swift; path = Sources/FavIcon/Detection.swift; sourceTree = "<group>"; };
 		6FAF8214BAF098D58FD46C440109DC25 /* Pods-ARBookmarks-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ARBookmarks-acknowledgements.plist"; sourceTree = "<group>"; };
-		6FB466252A0F9B906264331948C6EFCD /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		717D8811B1EA5FC6C57B68A359EA6FBF /* HTML.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HTML.swift; path = Sources/FavIcon/HTML.swift; sourceTree = "<group>"; };
-		860F7C71B1447A92F9376A4087110CE3 /* FavIcon.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = FavIcon.xcconfig; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		9BB31016568C051580BA5FD6CF7123F2 /* Detection.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Detection.swift; path = Sources/FavIcon/Detection.swift; sourceTree = "<group>"; };
-		9CE3060E1AD1916FDDBA0772A4E64E8A /* FavIcon.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FavIcon.swift; path = Sources/FavIcon/FavIcon.swift; sourceTree = "<group>"; };
-		9E9F8154241A73E88679E5A67B81337E /* Pods_ARBookmarks.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_ARBookmarks.framework; path = "Pods-ARBookmarks.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		800C43447227A2959DEC9CE7B8ED463D /* FavIcon-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "FavIcon-dummy.m"; sourceTree = "<group>"; };
+		81F49E52F2452F0DDAB5588C25E95DE7 /* Download.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Download.swift; path = Sources/FavIcon/Download.swift; sourceTree = "<group>"; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		992329088F641BF07D2084E1A09BC0FA /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Fabric.framework; path = iOS/Fabric.framework; sourceTree = "<group>"; };
+		9D4CB85F8485DD5A4C1BC11D54B4AE11 /* FavIcon.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = FavIcon.xcconfig; sourceTree = "<group>"; };
+		9E9F8154241A73E88679E5A67B81337E /* Pods_ARBookmarks.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ARBookmarks.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FACEAFB5622BF69ECA019D8932DB825 /* Pods-ARBookmarks-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-ARBookmarks-acknowledgements.markdown"; sourceTree = "<group>"; };
+		A31ABCE705A56AEB36F578C6B92076B8 /* Crashlytics.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Crashlytics.h; path = iOS/Crashlytics.framework/Headers/Crashlytics.h; sourceTree = "<group>"; };
+		AB07CF93858EB584588D4CC120647E0E /* ContentTypes.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ContentTypes.swift; path = Sources/FavIcon/ContentTypes.swift; sourceTree = "<group>"; };
 		AD13A47C8DEEAA6AEED7EED3E9D71457 /* Pods-ARBookmarks.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ARBookmarks.release.xcconfig"; sourceTree = "<group>"; };
-		AE0F2EC0F74B309F7DFC00849828BC68 /* FavIcon.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = FavIcon.modulemap; sourceTree = "<group>"; };
+		AD4076FD6B242BC68698691187050980 /* FavIcon-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FavIcon-prefix.pch"; sourceTree = "<group>"; };
+		B104DD04FA33410888F9F1F13602CA77 /* Icon.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Icon.swift; path = Sources/FavIcon/Icon.swift; sourceTree = "<group>"; };
+		B356E432C7B654D57D9B4FCD8009153D /* CLSReport.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CLSReport.h; path = iOS/Crashlytics.framework/Headers/CLSReport.h; sourceTree = "<group>"; };
 		D6DFF15000AFE2A371BF499E7AFDA808 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		E0CEB5046C3ACB93073A54B936C19B0B /* FavIcon-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FavIcon-umbrella.h"; sourceTree = "<group>"; };
-		E2726843AAD90C5B1E22E2BEABDE3052 /* FavIcon-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FavIcon-prefix.pch"; sourceTree = "<group>"; };
+		D995A5E0372BA73E54EA4AF2FE218407 /* CLSLogging.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CLSLogging.h; path = iOS/Crashlytics.framework/Headers/CLSLogging.h; sourceTree = "<group>"; };
 		E316A0253C0FB3F5A33C3C49D7D3E665 /* Pods-ARBookmarks-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ARBookmarks-resources.sh"; sourceTree = "<group>"; };
 		E9E438616331174CE64332A53B410F9E /* Pods-ARBookmarks-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-ARBookmarks-dummy.m"; sourceTree = "<group>"; };
 		EE8F85739A3721ED538A43D3D3DFD95C /* Pods-ARBookmarks.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ARBookmarks.debug.xcconfig"; sourceTree = "<group>"; };
-		EFF41742D1003B760D1E774E1790CB31 /* FavIcon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = FavIcon.framework; path = FavIcon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EEA7117454581C684365D84A6F1DD2AD /* ANSCompatibility.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ANSCompatibility.h; path = iOS/Crashlytics.framework/Headers/ANSCompatibility.h; sourceTree = "<group>"; };
+		EFF41742D1003B760D1E774E1790CB31 /* FavIcon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FavIcon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F3A5E4EB98877A1CBD7E217943047AAD /* IconType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IconType.swift; path = Sources/FavIcon/IconType.swift; sourceTree = "<group>"; };
+		F99FCA742138CA14BBA0A7D3EB31A04C /* Fabric.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Fabric.h; path = iOS/Fabric.framework/Headers/Fabric.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,20 +95,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		05CCAFBF6F197B8B9B8656437449B700 /* FavIcon */ = {
+		1102862EB48782F9335E87A352C1B602 /* FavIcon */ = {
 			isa = PBXGroup;
 			children = (
-				4DE1FCB52259F82B0700A4EA759ECC7F /* ContentTypes.swift */,
-				9BB31016568C051580BA5FD6CF7123F2 /* Detection.swift */,
-				5CCDABAA0866D7649F59E18A885B8EFC /* Download.swift */,
-				9CE3060E1AD1916FDDBA0772A4E64E8A /* FavIcon.swift */,
-				717D8811B1EA5FC6C57B68A359EA6FBF /* HTML.swift */,
-				05DA8E99DA426F438B6436E7AFBB0B4E /* Icon.swift */,
-				5137AD0DAD153FCB243BEEE733561B57 /* IconType.swift */,
-				107565612C0F75D50070BFD04DC8B938 /* XML.swift */,
-				4BFABCE2A3EFD8DCF8A2B925E7B05451 /* Support Files */,
+				AB07CF93858EB584588D4CC120647E0E /* ContentTypes.swift */,
+				672D10E61C2133BCA5F8AD904426DB47 /* Detection.swift */,
+				81F49E52F2452F0DDAB5588C25E95DE7 /* Download.swift */,
+				4A311BB076E1597C97EC814BDCBF2573 /* FavIcon.swift */,
+				079B57D60778954F6B5332B554523D65 /* HTML.swift */,
+				B104DD04FA33410888F9F1F13602CA77 /* Icon.swift */,
+				F3A5E4EB98877A1CBD7E217943047AAD /* IconType.swift */,
+				2AE22D6F0D2E0D979D27188AE6D5A037 /* XML.swift */,
+				9CFC34B52C8D3E36FB07563CCC9698C5 /* Support Files */,
 			);
-			name = FavIcon;
 			path = FavIcon;
 			sourceTree = "<group>";
 		};
@@ -109,18 +119,22 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
-		4BFABCE2A3EFD8DCF8A2B925E7B05451 /* Support Files */ = {
+		70BD040F237CF76B79A3D36E9A8C9ADE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				AE0F2EC0F74B309F7DFC00849828BC68 /* FavIcon.modulemap */,
-				860F7C71B1447A92F9376A4087110CE3 /* FavIcon.xcconfig */,
-				183103FC538A1ED6A9C319FA4C89B096 /* FavIcon-dummy.m */,
-				E2726843AAD90C5B1E22E2BEABDE3052 /* FavIcon-prefix.pch */,
-				E0CEB5046C3ACB93073A54B936C19B0B /* FavIcon-umbrella.h */,
-				6FB466252A0F9B906264331948C6EFCD /* Info.plist */,
+				992329088F641BF07D2084E1A09BC0FA /* Fabric.framework */,
 			);
-			name = "Support Files";
-			path = "../Target Support Files/FavIcon";
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		765A3C274F9B077435254CCA4EC1028F /* Fabric */ = {
+			isa = PBXGroup;
+			children = (
+				088924A533CD5FA6BCBF7935D37FD6DC /* FABAttributes.h */,
+				F99FCA742138CA14BBA0A7D3EB31A04C /* Fabric.h */,
+				70BD040F237CF76B79A3D36E9A8C9ADE /* Frameworks */,
+			);
+			path = Fabric;
 			sourceTree = "<group>";
 		};
 		7DB346D0F39D3F0E887471402A8071AB = {
@@ -128,10 +142,28 @@
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
 				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
-				E9F71CFA05F6A4B83EECAD9BAD019D8D /* Pods */,
+				8F4311404F8C384AFCFD7E77D803DB80 /* Pods */,
 				AB8D69E3BC4C049C9442B5F4B0CA6326 /* Products */,
 				9144FE342704AA6070790222D4C52B48 /* Targets Support Files */,
 			);
+			sourceTree = "<group>";
+		};
+		7E9E715D59E29CAFCF6BD3FA9C451BFF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2EEED92F7EFC10EE835F5C75422CED07 /* Crashlytics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8F4311404F8C384AFCFD7E77D803DB80 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				95AD8324AB9A8C0A63FD9A34357B63AE /* Crashlytics */,
+				765A3C274F9B077435254CCA4EC1028F /* Fabric */,
+				1102862EB48782F9335E87A352C1B602 /* FavIcon */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 		9144FE342704AA6070790222D4C52B48 /* Targets Support Files */ = {
@@ -140,6 +172,35 @@
 				E565058851ACBD319231F260285C0776 /* Pods-ARBookmarks */,
 			);
 			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		95AD8324AB9A8C0A63FD9A34357B63AE /* Crashlytics */ = {
+			isa = PBXGroup;
+			children = (
+				EEA7117454581C684365D84A6F1DD2AD /* ANSCompatibility.h */,
+				37D493283909293213F95136371C1224 /* Answers.h */,
+				62EC6612B96A4B6B95B2E7F1C130A242 /* CLSAttributes.h */,
+				D995A5E0372BA73E54EA4AF2FE218407 /* CLSLogging.h */,
+				B356E432C7B654D57D9B4FCD8009153D /* CLSReport.h */,
+				05B9BBA60B8D70F72259E8DA556B89E6 /* CLSStackFrame.h */,
+				A31ABCE705A56AEB36F578C6B92076B8 /* Crashlytics.h */,
+				7E9E715D59E29CAFCF6BD3FA9C451BFF /* Frameworks */,
+			);
+			path = Crashlytics;
+			sourceTree = "<group>";
+		};
+		9CFC34B52C8D3E36FB07563CCC9698C5 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				56FAD7DAF942A468F651DA33CADF0A2F /* FavIcon.modulemap */,
+				9D4CB85F8485DD5A4C1BC11D54B4AE11 /* FavIcon.xcconfig */,
+				800C43447227A2959DEC9CE7B8ED463D /* FavIcon-dummy.m */,
+				AD4076FD6B242BC68698691187050980 /* FavIcon-prefix.pch */,
+				4589A74C39E0120594DE8A939489208C /* FavIcon-umbrella.h */,
+				39A755771A959AD9DAA5D07B47BEAAAA /* Info.plist */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/FavIcon";
 			sourceTree = "<group>";
 		};
 		AB8D69E3BC4C049C9442B5F4B0CA6326 /* Products */ = {
@@ -175,14 +236,6 @@
 			);
 			name = "Pods-ARBookmarks";
 			path = "Target Support Files/Pods-ARBookmarks";
-			sourceTree = "<group>";
-		};
-		E9F71CFA05F6A4B83EECAD9BAD019D8D /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				05CCAFBF6F197B8B9B8656437449B700 /* FavIcon */,
-			);
-			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -251,7 +304,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0930;
-				LastUpgradeCheck = 0930;
+				LastUpgradeCheck = 1010;
 			};
 			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -327,7 +380,7 @@
 /* Begin XCBuildConfiguration section */
 		0A2F74D171E13EB677BF9AFDD01D122C /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 860F7C71B1447A92F9376A4087110CE3 /* FavIcon.xcconfig */;
+			baseConfigurationReference = 9D4CB85F8485DD5A4C1BC11D54B4AE11 /* FavIcon.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -342,17 +395,14 @@
 				INFOPLIST_FILE = "Target Support Files/FavIcon/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/FavIcon/FavIcon.modulemap";
 				PRODUCT_MODULE_NAME = FavIcon;
 				PRODUCT_NAME = FavIcon;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -482,8 +532,7 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 4.2;
 				SYMROOT = "${SRCROOT}/../build";
 			};
@@ -507,11 +556,7 @@
 				INFOPLIST_FILE = "Target Support Files/Pods-ARBookmarks/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-ARBookmarks/Pods-ARBookmarks.modulemap";
 				OTHER_LDFLAGS = "";
@@ -545,11 +590,7 @@
 				INFOPLIST_FILE = "Target Support Files/Pods-ARBookmarks/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-ARBookmarks/Pods-ARBookmarks.modulemap";
 				OTHER_LDFLAGS = "";
@@ -568,7 +609,7 @@
 		};
 		E1446046D91FEAD553C7A404C7A4B482 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 860F7C71B1447A92F9376A4087110CE3 /* FavIcon.xcconfig */;
+			baseConfigurationReference = 9D4CB85F8485DD5A4C1BC11D54B4AE11 /* FavIcon.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -583,17 +624,14 @@
 				INFOPLIST_FILE = "Target Support Files/FavIcon/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/FavIcon/FavIcon.modulemap";
 				PRODUCT_MODULE_NAME = FavIcon;
 				PRODUCT_NAME = FavIcon;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";

@@ -206,6 +206,7 @@
 				C08B5BE1214A43EC00516866 /* Resources */,
 				C015C8B32173E43E002406B8 /* Embed App Extensions */,
 				18CC62FAEB492F3ADF3C4987 /* [CP] Embed Pods Frameworks */,
+				C01CF7F521D7BCD900AA42F3 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -312,6 +313,23 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ARBookmarks/Pods-ARBookmarks-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		C01CF7F521D7BCD900AA42F3 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" a4fc112bcb5b0a1187496da76f064f7fb0618bfe 4d795f2cdda1b88b7550b9d8708dbb73b286ce1788376153a014b6380358a501\n";
 		};
 		FB0553745584D971A16C767B /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -480,7 +498,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;

@@ -10,20 +10,28 @@ import UIKit
 import SpriteKit
 import ARKit
 import FavIcon
-
+import Fabric
+import Crashlytics
 
 class ViewController: UIViewController, ARSKViewDelegate {
     
     @IBOutlet var sceneView: ARSKView!
     @IBOutlet weak var errorLabel: UILabel!
     
-    @IBAction func unwindToViewController(segue: UIStoryboardSegue) {
-        print("got to unwind " + (selected?.url?.absoluteString)!)
-        sceneView.session.add(anchor: (selected)!)
-    }
-    
     let store = CoreDataStack.store
     var selected:URLAnchor? = nil
+    
+    @IBAction func unwindToViewController(segue: UIStoryboardSegue) {
+        print("got to unwind " + (selected?.url?.absoluteString)!)
+        store.getCount()
+        Answers.logCustomEvent(withName: "Placed Bookmark", customAttributes: [
+            "Total bookmarks": store.totalBookmarks,
+            "Placed bookmarks": store.placedBookmarks,
+            "Unplaced bookmarks": store.unplacedBookmarks,
+        ] )
+
+        sceneView.session.add(anchor: (selected)!)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,7 +56,7 @@ class ViewController: UIViewController, ARSKViewDelegate {
         
         // Create a session configuration
         let configuration = ARWorldTrackingConfiguration()
-//        configuration.planeDetection = [.vertical, .horizontal]
+
         // Run the view's session
         sceneView.session.run(configuration)
     }
@@ -66,12 +74,11 @@ class ViewController: UIViewController, ARSKViewDelegate {
     }
     
     // MARK: - ARSKViewDelegate
-    
     func view(_ view: ARSKView, nodeFor anchor: ARAnchor) -> SKNode? {
 //        let labelNode = SKLabelNode(text: "🔗")
 //        labelNode.horizontalAlignmentMode = .center
 //        labelNode.verticalAlignmentMode = .center
-        var labelNode:SKSpriteNode = SKSpriteNode()
+        let labelNode:SKSpriteNode = SKSpriteNode()
         var url:String = ""
         
         if let urlanchor = anchor as? URLAnchor {
