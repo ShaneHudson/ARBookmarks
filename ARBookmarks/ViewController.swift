@@ -56,7 +56,7 @@ class ViewController: UIViewController, ARSKViewDelegate {
         
         // Create a session configuration
         let configuration = ARWorldTrackingConfiguration()
-
+        
         // Run the view's session
         sceneView.session.run(configuration)
     }
@@ -75,33 +75,36 @@ class ViewController: UIViewController, ARSKViewDelegate {
     
     // MARK: - ARSKViewDelegate
     func view(_ view: ARSKView, nodeFor anchor: ARAnchor) -> SKNode? {
-//        let labelNode = SKLabelNode(text: "🔗")
-//        labelNode.horizontalAlignmentMode = .center
-//        labelNode.verticalAlignmentMode = .center
-        let labelNode:SKSpriteNode = SKSpriteNode()
-        var url:String = ""
+        let urlanchor = anchor as! URLAnchor
         
-        if let urlanchor = anchor as? URLAnchor {
+        if (urlanchor.url != nil) {
+            let labelNode = SKSpriteNode()
+            var url:String = ""
+            
             url = (urlanchor.url?.absoluteString)!
             labelNode.name = url
+            
+            do {
+                try FavIcon.downloadPreferred(url, width: 200, height: 200, completion: { (result) in
+                    if case let .success(image) = result {
+                        let Texture = SKTexture(image: image)
+                        labelNode.texture = Texture
+                        labelNode.size = CGSize(width: 50, height: 50)
+                    } else if case let .failure(error) = result {
+                        print("failed to download preferred favicon for \(url): \(error)")
+                    }
+                })
+            } catch let error {
+                print("failed to download preferred favicon for \(url): \(error)")
+            }
+            return labelNode
+        } else {
+            let labelNode = SKLabelNode(text: "🔗")
+            labelNode.horizontalAlignmentMode = .center
+            labelNode.verticalAlignmentMode = .center
+            labelNode.name = "https://example.com"
+            return labelNode
         }
-        
-        do {
-            try FavIcon.downloadPreferred(url, width: 200, height: 200, completion: { (result) in
-                if case let .success(image) = result {
-                    let Texture = SKTexture(image: image)
-                    
-                    labelNode.texture = Texture
-                    labelNode.size = CGSize(width: 50, height: 50)
-                } else if case let .failure(error) = result {
-                    print("failed to download preferred favicon for \(url): \(error)")
-                }
-            })
-        } catch let error {
-            print("failed to download preferred favicon for \(url): \(error)")
-        }
-        
-        return labelNode
     }
     
     func session(_ session: ARSession, didFailWithError error: Error) {
@@ -118,4 +121,59 @@ class ViewController: UIViewController, ARSKViewDelegate {
         
     }
     
+    // MARK: - Persistence: Saving and Loading
+    lazy var mapSaveURL: URL = {
+        do {
+            return try FileManager.default
+                .url(for: .documentDirectory,
+                     in: .userDomainMask,
+                     appropriateFor: nil,
+                     create: true)
+                .appendingPathComponent("map.arexperience")
+        } catch {
+            fatalError("Can't get file save URL: \(error.localizedDescription)")
+        }
+    }()
+    
+    var mapDataFromFile: Data? {
+        return try? Data(contentsOf: mapSaveURL)
+    }
+    
+    @available(iOS 12.0, *)
+    @IBAction func Load(_ sender: Any) {
+        /// - Tag: ReadWorldMap
+        let worldMap: ARWorldMap = {
+            guard let data = mapDataFromFile
+                else { fatalError("Map data should already be verified to exist before Load button is enabled.") }
+            print("Load: ", data)
+            do {
+                guard let worldMap = try NSKeyedUnarchiver.unarchivedObject(ofClass: ARWorldMap.self, from: data)
+                    else { fatalError("No ARWorldMap in archive.") }
+                return worldMap
+            } catch {
+                fatalError("Can't unarchive ARWorldMap from file data: \(error)")
+            }
+        }()
+        
+        worldMap.anchors.forEach { (anchor) in
+            print(anchor)
+//            sceneView.session.add(anchor: anchor)
+        }
+        let configuration = ARWorldTrackingConfiguration()
+        configuration.initialWorldMap = worldMap
+        sceneView.session.run(configuration, options: [.resetTracking, .removeExistingAnchors])
+    }
+    
+    @available(iOS 12.0, *)
+    @IBAction func Save(_ sender: Any) {
+        sceneView.session.getCurrentWorldMap { worldMap, error in
+            do {
+                let data = try NSKeyedArchiver.archivedData(withRootObject: worldMap, requiringSecureCoding: true)
+                print("Save: ", data)
+                try data.write(to: self.mapSaveURL, options: [.atomic])
+            } catch {
+                fatalError("Can't save map: \(error.localizedDescription)")
+            }
+        }
+    }
 }

@@ -15,11 +15,24 @@ open class URLAnchor: ARAnchor {
     }
     
     required public init(anchor: ARAnchor) {
-        super.init(anchor: anchor)
+        let other = anchor as! URLAnchor
+        self.url = other.url
+        super.init(anchor: other)
+    }
+    
+    required public init(anchor: URLAnchor) {
+        let other = anchor
+        self.url = other.url
+        super.init(anchor: other)
     }
     
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
+    override open func encode(with aCoder: NSCoder) {
+        super.encode(with: aCoder)
+    }
+    
+    override open class var supportsSecureCoding: Bool { return true }
 }
