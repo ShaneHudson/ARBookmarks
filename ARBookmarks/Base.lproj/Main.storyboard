@@ -10,37 +10,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="2NI-El-S4E">
-            <objects>
-                <viewController id="ZSa-ea-Ho3" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="oNs-78-wsY">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KAL-Xj-dpX">
-                                <rect key="frame" x="16" y="106" width="178" height="77"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="Create new scene"/>
-                                <connections>
-                                    <action selector="Create:" destination="0m9-Bz-U6F" eventType="touchUpInside" id="oHe-CJ-v9O"/>
-                                    <segue destination="BV1-FR-VrT" kind="show" id="0gd-2i-4DG"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="rCP-fy-dzj"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="173-XR-w2b"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="22Q-GL-cYL" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="0m9-Bz-U6F" userLabel="Exit" sceneMemberID="exit"/>
-            </objects>
-            <point key="canvasLocation" x="1735.2" y="44.334975369458128"/>
-        </scene>
         <!--AR Bookmarks-->
         <scene sceneID="tXr-a1-R10">
             <objects>
@@ -53,36 +22,26 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </arskView>
-                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hUM-XN-WoG">
-                                <rect key="frame" x="363" y="924" width="0.0" height="0.0"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5yo-bC-TmR">
+                                <rect key="frame" x="24" y="87" width="72" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Reset">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleShadowColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="Reset:" destination="BV1-FR-VrT" eventType="touchUpInside" id="xai-Lt-VO6"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="error label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hUM-XN-WoG">
+                                <rect key="frame" x="114" y="49" width="147" height="68"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LXL-iH-nfr">
-                                <rect key="frame" x="20" y="78" width="123" height="47"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="Save"/>
-                                <connections>
-                                    <action selector="Save:" destination="BV1-FR-VrT" eventType="touchUpInside" id="TaW-uU-B3R"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oo2-8X-cz5">
-                                <rect key="frame" x="165" y="78" width="123" height="47"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="Load"/>
-                                <connections>
-                                    <action selector="Load:" destination="BV1-FR-VrT" eventType="touchUpInside" id="qNK-a2-HMn"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="4Kv-bM-fzs"/>
@@ -96,7 +55,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2496.8000000000002" y="46.551724137931039"/>
+            <point key="canvasLocation" x="1888.8" y="46.551724137931039"/>
         </scene>
         <!--Browse-->
         <scene sceneID="tnL-tt-hdN">
@@ -145,7 +104,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IRX-xe-V2X" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="C9z-gj-JDs" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="3379.6875" y="46.875"/>
+            <point key="canvasLocation" x="2878" y="47"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="cy2-7T-voH">
@@ -160,7 +119,7 @@
                     <nil name="viewControllers"/>
                     <connections>
                         <segue destination="ApV-9x-lhQ" kind="show" identifier="browse" id="bRK-Fh-rJY"/>
-                        <segue destination="ZSa-ea-Ho3" kind="relationship" relationship="rootViewController" id="RFB-dw-Wsd"/>
+                        <segue destination="BV1-FR-VrT" kind="relationship" relationship="rootViewController" id="JpQ-Qg-97x"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gt1-ap-CZD" userLabel="First Responder" sceneMemberID="firstResponder"/>

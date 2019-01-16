@@ -7,32 +7,32 @@
 //
 import ARKit
 
-open class URLAnchor: ARAnchor {
+class URLAnchor: ARAnchor {
     var url: URL?
     
-    public override init(transform: matrix_float4x4) {
+    override init(transform: matrix_float4x4) {
         super.init(transform: transform)
     }
     
-    required public init(anchor: ARAnchor) {
-        let other = anchor as! URLAnchor
-        self.url = other.url
-        super.init(anchor: other)
+    required init(anchor: ARAnchor) {
+        self.url = (anchor as! URLAnchor).url
+        super.init(anchor: anchor)
     }
     
-    required public init(anchor: URLAnchor) {
-        let other = anchor
-        self.url = other.url
-        super.init(anchor: other)
-    }
-    
-    required public init?(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
+        if let url = aDecoder.decodeObject(forKey: "url") as? URL {
+            self.url = url
+        } else {
+            return nil
+        }
+        
         super.init(coder: aDecoder)
     }
     
-    override open func encode(with aCoder: NSCoder) {
+    override func encode(with aCoder: NSCoder) {
         super.encode(with: aCoder)
+        aCoder.encode(url, forKey: "url")
     }
-    
-    override open class var supportsSecureCoding: Bool { return true }
+
+    override class var supportsSecureCoding: Bool { return true }
 }

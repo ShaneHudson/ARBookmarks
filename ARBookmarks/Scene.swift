@@ -153,6 +153,45 @@ class Scene: SKScene {
             "Unplaced bookmarks": store.unplacedBookmarks,
         ] )
 
-        sceneView.session.add(anchor: anchor)
+        sceneView.session.add(anchor: anchor as! URLAnchor)
+        if #available(iOS 12.0, *) {
+            self.Save()
+        }
     }
+
+    // MARK: - Persistence: Saving and Loading
+    lazy var mapSaveURL: URL = {
+        do {
+            return try FileManager.default
+                .url(for: .documentDirectory,
+                     in: .userDomainMask,
+                     appropriateFor: nil,
+                     create: true)
+                .appendingPathComponent("map.arexperience")
+        } catch {
+            fatalError("Can't get file save URL: \(error.localizedDescription)")
+        }
+    }()
+    
+    var mapDataFromFile: Data? {
+        return try? Data(contentsOf: mapSaveURL)
+    }
+    
+    @available(iOS 12.0, *)
+    func Save() {
+        guard let sceneView = self.view as? ARSKView else {
+            return
+        }
+
+        sceneView.session.getCurrentWorldMap { worldMap, error in
+            do {
+                let data = try NSKeyedArchiver.archivedData(withRootObject: worldMap!, requiringSecureCoding: true)
+                print("Save: ", data)
+                try data.write(to: self.mapSaveURL, options: [.atomic])
+            } catch {
+                fatalError("Can't save map: \(error.localizedDescription)")
+            }
+        }
+    }
+
 }
