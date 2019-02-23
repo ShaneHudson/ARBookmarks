@@ -130,11 +130,6 @@ class ViewController: UIViewController, ARSKViewDelegate {
     /// - Tag: CheckMappingStatus
     func session(_ session: ARSession, didUpdate frame: ARFrame) {
         if #available(iOS 12.0, *) {
-            // Enable Save button only when the mapping status is good and an object has been placed
-            errorLabel.text = """
-            Mapping: \(frame.worldMappingStatus.description)
-            Tracking: \(frame.camera.trackingState.description)
-            """
             updateSessionInfoLabel(for: frame, trackingState: frame.camera.trackingState)
         }
     }
@@ -145,18 +140,33 @@ class ViewController: UIViewController, ARSKViewDelegate {
         let message: String
         
         switch (trackingState, frame.worldMappingStatus) {
-        case (.normal, .mapped),
-             (.normal, .extending):
-            message = "Okay"
+            case (.normal, .mapped),
+                 (.normal, .extending):
+                message = "Okay"
             
-        case (.normal, _) where mapDataFromFile == nil:
-            message = "Move around to map the environment."
+            case (.normal, .limited):
+                message = frame.worldMappingStatus.description // "Move around to map the environment."
             
-        default:
-            message = trackingState.localizedFeedback
+            case (.limited(let reason), _):
+                switch reason {
+                    case .initializing:
+                        message = "Initalising"
+                    case .relocalizing:
+                        message = "Relocalizing"
+                    case .excessiveMotion:
+                        message = "Too much camera movement"
+                    case .insufficientFeatures:
+                        message = "Not enough surface detail"
+                }
+            default:
+                message = trackingState.localizedFeedback
         }
         
-        errorLabel.text = message
+        errorLabel.text = message + """
+        
+        Mapping: \(frame.worldMappingStatus.description)
+        Tracking: \(frame.camera.trackingState.description)
+        """
     }
 
 
@@ -191,10 +201,12 @@ class ViewController: UIViewController, ARSKViewDelegate {
     func Load() {
         /// - Tag: ReadWorldMap
         if ((mapDataFromFile) == nil) {
+            errorLabel.text = "Failed to load world map"
+            print("Failed to load world map")
             self.initWorld()
         }
         else {
-            let worldMap: ARWorldMap = {
+            let worldMap: ARWorldMap? = {
                 guard let data = mapDataFromFile
                     else {
                         fatalError("Map data should already be verified to exist before Load button is enabled.")
@@ -203,11 +215,23 @@ class ViewController: UIViewController, ARSKViewDelegate {
                 do {
                     guard let worldMap = try NSKeyedUnarchiver.unarchivedObject(ofClass: ARWorldMap.self, from: data)
                         else { fatalError("No ARWorldMap in archive.") }
+                    
+                    errorLabel.text = "Loaded world map"
+                    print("Loaded world map")
                     return worldMap
                 } catch {
-                    fatalError("Can't unarchive ARWorldMap from file data: \(error)")
+                    errorLabel.text = "Can't unarchive ARWorldMap"
+                    errorLabel.backgroundColor = UIColor.red
+                    print("Can't unarchive ARWorldMap from file data: \(error)")
+                    return nil
                 }
             }()
+            
+            if (worldMap == nil) {
+                errorLabel.text = "Failed to load nil world map"
+                print("Failed to load nil world map")
+                self.initWorld()
+            }
             
             let configuration = ARWorldTrackingConfiguration()
             configuration.initialWorldMap = worldMap
@@ -216,7 +240,7 @@ class ViewController: UIViewController, ARSKViewDelegate {
     }
     
     @available(iOS 12.0, *)
-    func Save() {
+    public func Save() {
         
         sceneView.session.getCurrentWorldMap { worldMap, error in
             
@@ -228,9 +252,11 @@ class ViewController: UIViewController, ARSKViewDelegate {
             do {
                 let data = try NSKeyedArchiver.archivedData(withRootObject: worldMap!, requiringSecureCoding: true)
                 print("App: Save: ", data)
+                self.errorLabel.text = "Saved"
                 try data.write(to: self.mapSaveURL, options: [.atomic])
             } catch {
                 print("App: Save failed")
+                self.errorLabel.text = "Save failed"
                 fatalError ("Can't save map: \(error.localizedDescription)")
             }
         }
@@ -238,6 +264,7 @@ class ViewController: UIViewController, ARSKViewDelegate {
 
     func initWorld() {
         print("App: Init world")
+        self.errorLabel.text = "Init world"
         // Create a session configuration
         let configuration = ARWorldTrackingConfiguration()
         

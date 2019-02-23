@@ -20,18 +20,13 @@ class URLAnchor: ARAnchor {
     }
     
     required init?(coder aDecoder: NSCoder) {
-        if let url = aDecoder.decodeObject(forKey: "url") as? URL {
-            self.url = url
-        } else {
-            return nil
-        }
-        
         super.init(coder: aDecoder)
+        url = URL(string: (aDecoder.decodeObject(forKey: "url") as? String)!)
     }
-    
+
     override func encode(with aCoder: NSCoder) {
         super.encode(with: aCoder)
-        aCoder.encode(url, forKey: "url")
+        aCoder.encode(url?.absoluteString, forKey: "url")
     }
 
     override class var supportsSecureCoding: Bool { return true }
