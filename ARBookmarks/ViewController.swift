@@ -12,6 +12,7 @@ import ARKit
 import FavIcon
 import Fabric
 import Crashlytics
+import MultipeerConnectivity
 
 class ViewController: UIViewController, ARSKViewDelegate {
     
@@ -20,9 +21,11 @@ class ViewController: UIViewController, ARSKViewDelegate {
     
     let store = CoreDataStack.store
     var selected:URLAnchor? = nil
-    
+    var scene = SKScene(fileNamed: "Scene") as! Scene
     var hasAppeared:Bool = false
+    var multipeerSession: MultipeerSession!
     
+    @IBOutlet weak var targetLabel: UILabel!
     @IBAction func unwindToViewController(segue: UIStoryboardSegue) {
         print("App: got to unwind " + (selected?.url?.absoluteString)!)
         store.getCount()
@@ -36,6 +39,10 @@ class ViewController: UIViewController, ARSKViewDelegate {
         if #available(iOS 12.0, *) {
             self.Save()
         }
+    }
+    
+    func sessionShouldAttemptRelocalization(_ session: ARSession) -> Bool {
+        return true
     }
     
     override func viewDidLoad() {
@@ -52,9 +59,8 @@ class ViewController: UIViewController, ARSKViewDelegate {
 //        sceneView.showsNodeCount = true
         
         // Load the SKScene from 'Scene.sks'
-        if let scene = SKScene(fileNamed: "Scene") {
-            sceneView.presentScene(scene)
-        }
+        sceneView.presentScene(scene)
+        scene.viewController = self
         
         if #available(iOS 12.0, *) {
             if (!self.hasAppeared) {
@@ -166,10 +172,14 @@ class ViewController: UIViewController, ARSKViewDelegate {
         
         Mapping: \(frame.worldMappingStatus.description)
         Tracking: \(frame.camera.trackingState.description)
+        Peers: \(multipeerSession.connectedPeers)
+        Map host: \(mapProvider)
         """
     }
 
-
+    public func setTarget(newTarget:String) {
+        targetLabel.text = newTarget
+    }
     
     func sessionWasInterrupted(_ session: ARSession) {
         // Inform the user that the session has been interrupted, for example, by presenting an overlay
@@ -199,6 +209,9 @@ class ViewController: UIViewController, ARSKViewDelegate {
     
     @available(iOS 12.0, *)
     func Load() {
+        
+        multipeerSession = MultipeerSession(receivedDataHandler: receivedData)
+        
         /// - Tag: ReadWorldMap
         if ((mapDataFromFile) == nil) {
             errorLabel.text = "Failed to load world map"
@@ -254,6 +267,7 @@ class ViewController: UIViewController, ARSKViewDelegate {
                 print("App: Save: ", data)
                 self.errorLabel.text = "Saved"
                 try data.write(to: self.mapSaveURL, options: [.atomic])
+                self.multipeerSession.sendToAllPeers(data)
             } catch {
                 print("App: Save failed")
                 self.errorLabel.text = "Save failed"
@@ -277,5 +291,35 @@ class ViewController: UIViewController, ARSKViewDelegate {
     
     @IBAction func Reset(_ sender: Any) {
         initWorld()
+    }
+    
+    var mapProvider: MCPeerID?
+    
+    /// - Tag: ReceiveData
+    @available(iOS 12.0, *)
+    func receivedData(_ data: Data, from peer: MCPeerID) {
+        
+        do {
+            if let worldMap = try NSKeyedUnarchiver.unarchivedObject(ofClass: ARWorldMap.self, from: data) {
+                // Run the session with the received world map.
+                let configuration = ARWorldTrackingConfiguration()
+                configuration.planeDetection = .horizontal
+                configuration.initialWorldMap = worldMap
+                sceneView.session.run(configuration, options: [.resetTracking, .removeExistingAnchors])
+                
+                // Remember who provided the map for showing UI feedback.
+                mapProvider = peer
+            }
+            else
+                if let anchor = try NSKeyedUnarchiver.unarchivedObject(ofClass: ARAnchor.self, from: data) {
+                    // Add anchor to the session, ARSCNView delegate adds visible content.
+                    sceneView.session.add(anchor: anchor)
+                }
+                else {
+                    print("unknown data recieved from \(peer)")
+            }
+        } catch {
+            print("can't decode data recieved from \(peer)")
+        }
     }
 }

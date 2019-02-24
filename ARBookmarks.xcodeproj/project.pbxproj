@@ -30,6 +30,7 @@
 		C08B5BF2214A43ED00516866 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C08B5BF1214A43ED00516866 /* Assets.xcassets */; };
 		C08B5BF5214A43ED00516866 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C08B5BF3214A43ED00516866 /* LaunchScreen.storyboard */; };
 		C08B5BFD214A5F4700516866 /* URLAnchor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C08B5BFC214A5F4700516866 /* URLAnchor.swift */; };
+		C0978C2222220C6A007C9A7D /* MultipeerConnectivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0978C2122220C6A007C9A7D /* MultipeerConnectivity.swift */; };
 		C0D8E3F1214AD4DF00926475 /* Scene.sks in Resources */ = {isa = PBXBuildFile; fileRef = C0D8E3F0214AD4DF00926475 /* Scene.sks */; };
 /* End PBXBuildFile section */
 
@@ -83,6 +84,7 @@
 		C08B5BF4214A43ED00516866 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C08B5BF6214A43ED00516866 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C08B5BFC214A5F4700516866 /* URLAnchor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLAnchor.swift; sourceTree = "<group>"; };
+		C0978C2122220C6A007C9A7D /* MultipeerConnectivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipeerConnectivity.swift; sourceTree = "<group>"; };
 		C0D8E3F0214AD4DF00926475 /* Scene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Scene.sks; sourceTree = "<group>"; };
 		F81313779572F5ED3877DAE9 /* Pods-ARBookmarks.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARBookmarks.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ARBookmarks/Pods-ARBookmarks.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -175,6 +177,7 @@
 				C083462F2156A105000761D4 /* Model.xcdatamodeld */,
 				C012D099216E2FEB00841CE4 /* NavigationController.swift */,
 				C07A098521DA33620042FF7D /* Utilities.swift */,
+				C0978C2122220C6A007C9A7D /* MultipeerConnectivity.swift */,
 			);
 			path = ARBookmarks;
 			sourceTree = "<group>";
@@ -378,6 +381,7 @@
 				C08B5BFD214A5F4700516866 /* URLAnchor.swift in Sources */,
 				C07A098621DA33620042FF7D /* Utilities.swift in Sources */,
 				C08B5BED214A43EC00516866 /* ViewController.swift in Sources */,
+				C0978C2222220C6A007C9A7D /* MultipeerConnectivity.swift in Sources */,
 				C08346312156A105000761D4 /* Model.xcdatamodeld in Sources */,
 				C08B5BEB214A43EC00516866 /* Scene.swift in Sources */,
 				C0520EDC2156FF0500651A5C /* Bookmark+CoreDataClass.swift in Sources */,
