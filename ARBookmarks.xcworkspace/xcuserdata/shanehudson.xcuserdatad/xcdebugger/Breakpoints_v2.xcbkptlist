@@ -10,12 +10,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ARBookmarks/ViewController.swift"
-            timestampString = "572663223.602631"
+            timestampString = "572719841.872564"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "237"
-            endingLineNumber = "237"
-            landmarkName = "Load()"
+            startingLineNumber = "313"
+            endingLineNumber = "313"
+            landmarkName = "receivedData(_:from:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -25,30 +25,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ARBookmarks/URLAnchor.swift"
-            timestampString = "572663223.602713"
+            filePath = "ARBookmarks/ViewController.swift"
+            timestampString = "572719841.873211"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "24"
-            endingLineNumber = "24"
-            landmarkName = "init(coder:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            condition = "targets.count &gt; 0"
-            continueAfterRunningActions = "No"
-            filePath = "ARBookmarks/Scene.swift"
-            timestampString = "572663223.6027631"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "32"
-            endingLineNumber = "32"
-            landmarkName = "update(_:)"
+            startingLineNumber = "314"
+            endingLineNumber = "314"
+            landmarkName = "receivedData(_:from:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -58,13 +41,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ARBookmarks/Scene.swift"
-            timestampString = "572663223.603112"
+            filePath = "ARBookmarks/ViewController.swift"
+            timestampString = "572719841.873543"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "29"
-            endingLineNumber = "29"
-            landmarkName = "update(_:)"
+            startingLineNumber = "312"
+            endingLineNumber = "312"
+            landmarkName = "receivedData(_:from:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -74,29 +57,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ARBookmarks/Scene.swift"
-            timestampString = "572663223.603369"
+            filePath = "ARBookmarks/ViewController.swift"
+            timestampString = "572719841.87386"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "30"
-            endingLineNumber = "30"
-            landmarkName = "update(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ARBookmarks/Scene.swift"
-            timestampString = "572663223.603614"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "33"
-            endingLineNumber = "33"
-            landmarkName = "update(_:)"
+            startingLineNumber = "324"
+            endingLineNumber = "324"
+            landmarkName = "receivedData(_:from:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

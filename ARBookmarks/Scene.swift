@@ -24,7 +24,6 @@ class Scene: SKScene {
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
         let targets = self.getTargets()
-        print(targets)
         
         if (targets.count > 0) {
             viewController.setTarget(newTarget: targets[0].name!)
@@ -32,8 +31,6 @@ class Scene: SKScene {
         else {
             viewController.setTarget(newTarget: "")
         }
-        
-        
     }
     
     public func getTargets() -> [SKNode] {
@@ -176,6 +173,10 @@ class Scene: SKScene {
         ] )
 
         sceneView.session.add(anchor: anchor as! URLAnchor)
+        guard let data = try? NSKeyedArchiver.archivedData(withRootObject: anchor as! URLAnchor, requiringSecureCoding: true)
+            else { fatalError("can't encode anchor") }
+        self.viewController.multipeerSession.sendToAllPeers(data)
+        
         if #available(iOS 12.0, *) {
             self.Save()
         }
