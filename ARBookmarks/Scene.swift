@@ -23,6 +23,28 @@ class Scene: SKScene {
     
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
+<<<<<<< HEAD
+=======
+        let targets = self.getTargets()
+        
+        if (targets.count > 0) {
+            viewController.setTarget(newTarget: targets[0].name!)
+        }
+        else {
+            viewController.setTarget(newTarget: "")
+        }
+    }
+    
+    public func getTargets() -> [SKNode] {
+        let location = sight.position
+        
+        // Get all objects hit by touch, ignore the first as that is the crosshair
+        let targets = nodes(at: location).dropFirst()
+        if (targets.count > 0) {
+            return Array(targets)
+        }
+        return []
+>>>>>>> 5a431e7... Update logo
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -154,6 +176,10 @@ class Scene: SKScene {
         ] )
 
         sceneView.session.add(anchor: anchor as! URLAnchor)
+        guard let data = try? NSKeyedArchiver.archivedData(withRootObject: anchor as! URLAnchor, requiringSecureCoding: true)
+            else { fatalError("can't encode anchor") }
+        self.viewController.multipeerSession.sendToAllPeers(data)
+        
         if #available(iOS 12.0, *) {
             self.Save()
         }
