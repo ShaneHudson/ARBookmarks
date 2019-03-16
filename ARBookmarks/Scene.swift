@@ -15,7 +15,7 @@ import Crashlytics
 class Scene: SKScene {
     var sight: SKNode!
     let store = CoreDataStack.store
-    
+    var viewController: ViewController!
     override func sceneDidLoad() {
         sight = SKSpriteNode(imageNamed: "sight")
         addChild(sight)
@@ -23,6 +23,25 @@ class Scene: SKScene {
     
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
+        let targets = self.getTargets()
+        
+        if (targets.count > 0) {
+            viewController.setTarget(newTarget: targets[0].name!)
+        }
+        else {
+            viewController.setTarget(newTarget: "")
+        }
+    }
+    
+    public func getTargets() -> [SKNode] {
+        let location = sight.position
+        
+        // Get all objects hit by touch, ignore the first as that is the crosshair
+        let targets = nodes(at: location).dropFirst()
+        if (targets.count > 0) {
+            return Array(targets)
+        }
+        return []
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -30,7 +49,7 @@ class Scene: SKScene {
         guard let sceneView = self.view as? ARSKView else {
             return
         }
-
+        
         let location = sight.position
         
         // Get all objects hit by touch, ignore the first as that is the crosshair
@@ -154,6 +173,9 @@ class Scene: SKScene {
         ] )
 
         sceneView.session.add(anchor: anchor as! URLAnchor)
+        guard let data = try? NSKeyedArchiver.archivedData(withRootObject: anchor as! URLAnchor, requiringSecureCoding: true)
+            else { fatalError("can't encode anchor") }
+        
         if #available(iOS 12.0, *) {
             self.Save()
         }

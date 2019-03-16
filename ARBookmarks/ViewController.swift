@@ -20,9 +20,10 @@ class ViewController: UIViewController, ARSKViewDelegate {
     
     let store = CoreDataStack.store
     var selected:URLAnchor? = nil
-    
+    var scene = SKScene(fileNamed: "Scene") as! Scene
     var hasAppeared:Bool = false
     
+    @IBOutlet weak var targetLabel: UILabel!
     @IBAction func unwindToViewController(segue: UIStoryboardSegue) {
         print("App: got to unwind " + (selected?.url?.absoluteString)!)
         store.getCount()
@@ -33,9 +34,16 @@ class ViewController: UIViewController, ARSKViewDelegate {
         ] )
 
         sceneView.session.add(anchor: selected as! URLAnchor)
+        guard let data = try? NSKeyedArchiver.archivedData(withRootObject: selected as! URLAnchor, requiringSecureCoding: true)
+            else { fatalError("can't encode anchor") }
+        
         if #available(iOS 12.0, *) {
             self.Save()
         }
+    }
+    
+    func sessionShouldAttemptRelocalization(_ session: ARSession) -> Bool {
+        return true
     }
     
     override func viewDidLoad() {
@@ -52,9 +60,8 @@ class ViewController: UIViewController, ARSKViewDelegate {
 //        sceneView.showsNodeCount = true
         
         // Load the SKScene from 'Scene.sks'
-        if let scene = SKScene(fileNamed: "Scene") {
-            sceneView.presentScene(scene)
-        }
+        sceneView.presentScene(scene)
+        scene.viewController = self
         
         if #available(iOS 12.0, *) {
             if (!self.hasAppeared) {
@@ -169,7 +176,9 @@ class ViewController: UIViewController, ARSKViewDelegate {
         """
     }
 
-
+    public func setTarget(newTarget:String) {
+        targetLabel.text = newTarget
+    }
     
     func sessionWasInterrupted(_ session: ARSession) {
         // Inform the user that the session has been interrupted, for example, by presenting an overlay
@@ -187,7 +196,7 @@ class ViewController: UIViewController, ARSKViewDelegate {
                      in: .userDomainMask,
                      appropriateFor: nil,
                      create: true)
-                .appendingPathComponent("test1")
+                .appendingPathComponent("arbookmarks")
         } catch {
             fatalError("Can't get file save URL: \(error.localizedDescription)")
         }
@@ -199,6 +208,7 @@ class ViewController: UIViewController, ARSKViewDelegate {
     
     @available(iOS 12.0, *)
     func Load() {
+        
         /// - Tag: ReadWorldMap
         if ((mapDataFromFile) == nil) {
             errorLabel.text = "Failed to load world map"

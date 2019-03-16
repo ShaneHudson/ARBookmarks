@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -18,12 +17,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <arskView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nXx-JM-KzW">
+                            <arskView contentMode="scaleAspectFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nXx-JM-KzW">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </arskView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5yo-bC-TmR">
-                                <rect key="frame" x="24" y="87" width="72" height="30"/>
+                                <rect key="frame" x="159" y="566" width="98" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Reset">
@@ -34,8 +33,16 @@
                                     <action selector="Reset:" destination="BV1-FR-VrT" eventType="touchUpInside" id="xai-Lt-VO6"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999998807907104" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="target" lineBreakMode="characterWrap" numberOfLines="11" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Qv-Mf-7KU">
+                                <rect key="frame" x="0.0" y="629" width="377" height="113"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="error label" lineBreakMode="characterWrap" numberOfLines="11" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hUM-XN-WoG">
-                                <rect key="frame" x="114" y="49" width="238" height="446"/>
+                                <rect key="frame" x="16" y="86" width="237" height="334"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -51,6 +58,7 @@
                     <connections>
                         <outlet property="errorLabel" destination="hUM-XN-WoG" id="4nr-Nd-jPP"/>
                         <outlet property="sceneView" destination="nXx-JM-KzW" id="3eq-pl-mdT"/>
+                        <outlet property="targetLabel" destination="0Qv-Mf-7KU" id="7RI-SB-CGP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
