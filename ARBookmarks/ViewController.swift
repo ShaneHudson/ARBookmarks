@@ -33,10 +33,6 @@ class ViewController: UIViewController, ARSKViewDelegate {
         ] )
 
         sceneView.session.add(anchor: selected as! URLAnchor)
-        guard let data = try? NSKeyedArchiver.archivedData(withRootObject: selected as! URLAnchor, requiringSecureCoding: true)
-            else { fatalError("can't encode anchor") }
-        self.multipeerSession.sendToAllPeers(data)
-        
         if #available(iOS 12.0, *) {
             self.Save()
         }
@@ -191,7 +187,7 @@ class ViewController: UIViewController, ARSKViewDelegate {
                      in: .userDomainMask,
                      appropriateFor: nil,
                      create: true)
-                .appendingPathComponent("arbookmarks")
+                .appendingPathComponent("test1")
         } catch {
             fatalError("Can't get file save URL: \(error.localizedDescription)")
         }
@@ -244,7 +240,7 @@ class ViewController: UIViewController, ARSKViewDelegate {
     }
     
     @available(iOS 12.0, *)
-    public func Save(updatePeers: Bool = false) {
+    public func Save() {
         
         sceneView.session.getCurrentWorldMap { worldMap, error in
             
@@ -258,12 +254,6 @@ class ViewController: UIViewController, ARSKViewDelegate {
                 print("App: Save: ", data)
                 self.errorLabel.text = "Saved"
                 try data.write(to: self.mapSaveURL, options: [.atomic])
-<<<<<<< HEAD
-=======
-                if (updatePeers) {
-                    self.multipeerSession.sendToAllPeers(data)
-                }
->>>>>>> 5a431e7... Update logo
             } catch {
                 print("App: Save failed")
                 self.errorLabel.text = "Save failed"
@@ -285,45 +275,7 @@ class ViewController: UIViewController, ARSKViewDelegate {
         }
     }
     
-    @available(iOS 12.0, *)
-    @IBAction func UpdatePeers(_ sender: Any) {
-        Save(updatePeers: true)
-    }
-    
     @IBAction func Reset(_ sender: Any) {
         initWorld()
     }
-<<<<<<< HEAD
-=======
-    
-    var mapProvider: MCPeerID?
-    
-    /// - Tag: ReceiveData
-    @available(iOS 12.0, *)
-    func receivedData(_ data: Data, from peer: MCPeerID) {
-        print("app: received data", data)
-        do {
-            if let worldMap = try NSKeyedUnarchiver.unarchivedObject(ofClass: ARWorldMap.self, from: data) {
-                // Run the session with the received world map.
-                let configuration = ARWorldTrackingConfiguration()
-                sceneView.session.run(configuration, options: [.resetTracking, .removeExistingAnchors])
-                try data.write(to: self.mapSaveURL, options: [.atomic])
-                
-                // Remember who provided the map for showing UI feedback.
-                mapProvider = peer
-            }
-            else
-                if let anchor = try NSKeyedUnarchiver.unarchivedObject(ofClass: URLAnchor.self, from: data) {
-                    // Add anchor to the session, ARSCNView delegate adds visible content.
-                    sceneView.session.add(anchor: anchor)
-                    Save()
-                }
-                else {
-                    print("unknown data recieved from \(peer)")
-            }
-        } catch {
-            print("can't decode data recieved from \(peer)")
-        }
-    }
->>>>>>> 5a431e7... Update logo
 }
