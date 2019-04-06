@@ -17,28 +17,31 @@ class ViewController: UIViewController, ARSKViewDelegate {
     
     @IBOutlet var sceneView: ARSKView!
     @IBOutlet weak var errorLabel: UILabel!
+    @IBOutlet weak var resetButton: UIButton!
+    
+    let debug = false
     
     let store = CoreDataStack.store
     var selected:URLAnchor? = nil
     var scene = SKScene(fileNamed: "Scene") as! Scene
     var hasAppeared:Bool = false
     
+    @IBOutlet weak var targetView: UIView!
     @IBOutlet weak var targetLabel: UILabel!
     @IBAction func unwindToViewController(segue: UIStoryboardSegue) {
-        print("App: got to unwind " + (selected?.url?.absoluteString)!)
-        store.getCount()
-        Answers.logCustomEvent(withName: "Placed Bookmark", customAttributes: [
-            "Total bookmarks": store.totalBookmarks,
-            "Placed bookmarks": store.placedBookmarks,
-            "Unplaced bookmarks": store.unplacedBookmarks,
-        ] )
-
-        sceneView.session.add(anchor: selected as! URLAnchor)
-        guard let data = try? NSKeyedArchiver.archivedData(withRootObject: selected as! URLAnchor, requiringSecureCoding: true)
-            else { fatalError("can't encode anchor") }
-        
-        if #available(iOS 12.0, *) {
-            self.Save()
+        if let selectedUnwrapped = selected {
+            store.getCount()
+            Answers.logCustomEvent(withName: "Placed Bookmark", customAttributes: [
+                "Total bookmarks": store.totalBookmarks,
+                "Placed bookmarks": store.placedBookmarks,
+                "Unplaced bookmarks": store.unplacedBookmarks,
+                ] )
+            
+            sceneView.session.add(anchor: selectedUnwrapped)
+            
+            if #available(iOS 12.0, *) {
+                self.Save()
+            }
         }
     }
     
@@ -48,16 +51,19 @@ class ViewController: UIViewController, ARSKViewDelegate {
     
     override func viewDidLoad() {
         print("App: viewDidLoad")
+        errorLabel.isHidden = !debug
+        resetButton.isHidden = !debug
+        targetView.isHidden = true
+        
         super.viewDidLoad()
         self.navigationController!.navigationBar.isHidden = true
+        targetView.layer.masksToBounds = true
+        targetView.layer.cornerRadius = 5
+        
         store.fetchNonPlacedBookmarks()
         
         // Set the view's delegate
         sceneView.delegate = self
-        
-        // Show statistics such as fps and node count
-//        sceneView.showsFPS = true
-//        sceneView.showsNodeCount = true
         
         // Load the SKScene from 'Scene.sks'
         sceneView.presentScene(scene)
@@ -114,13 +120,9 @@ class ViewController: UIViewController, ARSKViewDelegate {
                 print("App: failed to download preferred favicon for \(url): \(error)")
             }
             return labelNode
-        } else {
-            let labelNode = SKLabelNode(text: "🔗")
-            labelNode.horizontalAlignmentMode = .center
-            labelNode.verticalAlignmentMode = .center
-            labelNode.name = "https://example.com"
-            print("App: Adding example label")
-            return labelNode
+        }
+        else {
+            return nil
         }
     }
     
@@ -175,9 +177,15 @@ class ViewController: UIViewController, ARSKViewDelegate {
         Tracking: \(frame.camera.trackingState.description)
         """
     }
-
+    
     public func setTarget(newTarget:String) {
         targetLabel.text = newTarget
+        if (newTarget == "") {
+            targetView.isHidden = true
+        }
+        else { 
+            targetView.isHidden = false
+        }
     }
     
     func sessionWasInterrupted(_ session: ARSession) {

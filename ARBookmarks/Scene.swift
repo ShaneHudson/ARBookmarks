@@ -13,11 +13,12 @@ import Fabric
 import Crashlytics
 
 class Scene: SKScene {
-    var sight: SKNode!
+    var sight:SKSpriteNode = SKSpriteNode(imageNamed: "sight")
     let store = CoreDataStack.store
     var viewController: ViewController!
+    
     override func sceneDidLoad() {
-        sight = SKSpriteNode(imageNamed: "sight")
+        sight.colorBlendFactor = 1.0
         addChild(sight)
     }
     
@@ -26,9 +27,11 @@ class Scene: SKScene {
         let targets = self.getTargets()
         
         if (targets.count > 0) {
+            sight.color = UIColor.green
             viewController.setTarget(newTarget: targets[0].name!)
         }
         else {
+            sight.color = UIColor.white
             viewController.setTarget(newTarget: "")
         }
     }
@@ -172,8 +175,8 @@ class Scene: SKScene {
             "Unplaced bookmarks": store.unplacedBookmarks,
         ] )
 
-        sceneView.session.add(anchor: anchor as! URLAnchor)
-        guard let data = try? NSKeyedArchiver.archivedData(withRootObject: anchor as! URLAnchor, requiringSecureCoding: true)
+        sceneView.session.add(anchor: anchor)
+        guard (try? NSKeyedArchiver.archivedData(withRootObject: anchor, requiringSecureCoding: true)) != nil
             else { fatalError("can't encode anchor") }
         
         if #available(iOS 12.0, *) {

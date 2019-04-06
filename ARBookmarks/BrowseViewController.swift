@@ -93,7 +93,11 @@ class BrowseViewController: UIViewController, UITableViewDelegate, UITableViewDa
             self.store.delete(bookmark: self.store.fetchedBookmarks[indexPath.row])
             self.fetchBookmarks()
         }
-        return [delete]
+        
+        let open = UITableViewRowAction(style: .normal, title: "Open") { (action, indexPath) in
+            UIApplication.shared.open(URL(string: (self.store.fetchedBookmarks[indexPath.row].url?.absoluteString)!)!, options: [:])
+        }
+        return [delete, open]
     }
 
     // method to run when table view cell is tapped
