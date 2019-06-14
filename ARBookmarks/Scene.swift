@@ -138,7 +138,7 @@ class Scene: SKScene {
             let answer = ac.textFields![0]
             if (answer.text != "") {
                 print("Input: Adding URL " + answer.text!)
-                self.addAnchor(url: URL(string: answer.text!)!, transform: transform)
+                self.addAnchor(url: URL(string: answer.text!)!, title: answer.text ?? "", transform: transform)
             }
         }
         
@@ -156,17 +156,17 @@ class Scene: SKScene {
         view?.window?.rootViewController?.performSegue(withIdentifier: "browse", sender: transform)
     }
     
-    func addAnchor(url: URL, transform: matrix_float4x4) {
+    func addAnchor(url: URL, title: String, transform: matrix_float4x4) {
         
         guard let sceneView = self.view as? ARSKView else {
             return
         }
+        
+        let anchorTitle:String = title == "" ? url.absoluteString : title
 
         // Create anchor using the given current position
         let anchor = URLAnchor(transform: transform)
-        anchor.url = url
-        
-        self.store.storeBookmark(withTitle: "Bookmark store", withURL: url.absoluteURL, isPlaced: true)
+        anchor.uuid = self.store.storeBookmark(withTitle: anchorTitle, withURL: url.absoluteURL, isPlaced: true)
         
         self.store.getCount()
         Answers.logCustomEvent(withName: "Placed Bookmark", customAttributes: [

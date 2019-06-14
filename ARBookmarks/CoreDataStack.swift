@@ -16,12 +16,25 @@ final class CoreDataStack {
     var placedBookmarks = 0
     var unplacedBookmarks = 0
     
-    func storeBookmark(withTitle title: String, withURL url: URL, isPlaced: Bool?) {
+    func storeBookmark(withTitle title: String, withURL url: URL, isPlaced: Bool?) -> String {
         let bookmark = Bookmark(context: context)
-        bookmark.title = title
+        bookmark.title = title == "" ? url.absoluteString : title
         bookmark.url = url
         bookmark.isPlaced = isPlaced ?? false
+        bookmark.uuid = UUID().uuidString
         
+        try! context.save()
+        
+        return bookmark.uuid!
+    }
+    
+    func setIsPlaced(bookmark: Bookmark, isPlaced: Bool) {
+        bookmark.isPlaced = isPlaced
+        try! context.save()
+    }
+    
+    func rename(bookmark: Bookmark, title: String) {
+        bookmark.title = title
         try! context.save()
     }
     
@@ -61,6 +74,16 @@ final class CoreDataStack {
         fetchRequest.predicate = NSPredicate(format: "isPlaced == false")
         self.fetchedBookmarks = try! context.fetch(fetchRequest) as! [Bookmark]
     }
+    
+    
+    func getByID(id: String) -> Bookmark {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Bookmark")
+        let bookmarks = try! context.fetch(fetchRequest) as! [Bookmark]
+        return bookmarks.first { (bookmark:Bookmark) -> Bool in
+            bookmark.uuid == id
+        }!
+    }
+
     
     func delete(bookmark: Bookmark) {
         context.delete(bookmark)

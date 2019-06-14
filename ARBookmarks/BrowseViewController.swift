@@ -84,7 +84,7 @@ class BrowseViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let cell:UITableViewCell? = self.tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier)
         
         // set the text from the data model
-        cell!.textLabel?.text = store.fetchedBookmarks[indexPath.row].url?.absoluteString
+        cell!.textLabel?.text = store.fetchedBookmarks[indexPath.row].title
         return cell!
     }
     
@@ -94,22 +94,39 @@ class BrowseViewController: UIViewController, UITableViewDelegate, UITableViewDa
             self.fetchBookmarks()
         }
         
+        let rename = UITableViewRowAction(style: .normal, title: "Rename") { (action, indexPath) in
+            
+            let ac = UIAlertController(title: "Enter title", message: nil, preferredStyle: .alert)
+            ac.addTextField()
+
+            let submitAction = UIAlertAction(title: "Submit", style: .default) { [unowned ac] _ in
+                let title = ac.textFields![0]
+                if (title.text != "") {
+                    print("Input: Renaming title to " + title.text!)
+                    self.store.rename(bookmark: self.store.fetchedBookmarks[indexPath.row], title: title.text ?? "")
+                    self.fetchBookmarks()
+                }
+            }
+            
+            ac.addAction(submitAction)
+            self.view?.window?.rootViewController?.present(ac, animated: true, completion: nil)
+        }
+        
         let open = UITableViewRowAction(style: .normal, title: "Open") { (action, indexPath) in
             UIApplication.shared.open(URL(string: (self.store.fetchedBookmarks[indexPath.row].url?.absoluteString)!)!, options: [:])
         }
-        return [delete, open]
+        return [delete, rename, open]
     }
 
     // method to run when table view cell is tapped
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if (transform != nil && store.fetchedBookmarks[indexPath.row].url != nil) {
+        let bookmark:Bookmark = store.fetchedBookmarks[indexPath.row] as Bookmark
+        if (transform != nil && bookmark.url != nil && bookmark.uuid != nil) {
             let anchor = URLAnchor(transform: (transform)!)
-            let bookmark = store.fetchedBookmarks[indexPath.row]
-            anchor.url = bookmark.url
+            anchor.uuid = bookmark.uuid
             if (segmentToggle.selectedSegmentIndex == 0) {
                 // This makes sure it only moves from unplaced to placed if unplaced to begin with
-                self.store.delete(bookmark: bookmark)
-                self.store.storeBookmark(withTitle: "Bookmark store", withURL: (anchor.url?.absoluteURL)!, isPlaced: true)
+                self.store.setIsPlaced(bookmark: bookmark, isPlaced: true)
             }
             self.performSegue(withIdentifier: "unwindBrowse", sender: anchor)
         }

@@ -99,27 +99,33 @@ class ViewController: UIViewController, ARSKViewDelegate {
     func view(_ view: ARSKView, nodeFor anchor: ARAnchor) -> SKNode? {
         let urlanchor = anchor as! URLAnchor
         
-        if (urlanchor.url != nil) {
-            let labelNode = SKSpriteNode()
-            var url:String = ""
+        if (urlanchor.uuid != nil) {
+            let bookmark:Bookmark = store.getByID(id: urlanchor.uuid!)
             
-            url = (urlanchor.url?.absoluteString)!
-            labelNode.name = url
-            
-            do {
-                try FavIcon.downloadPreferred(url, width: 200, height: 200, completion: { (result) in
-                    if case let .success(image) = result {
-                        let Texture = SKTexture(image: image)
-                        labelNode.texture = Texture
-                        labelNode.size = CGSize(width: 50, height: 50)
-                    } else if case let .failure(error) = result {
-                        print("App: failed to download preferred favicon for \(url): \(error)")
-                    }
-                })
-            } catch let error {
-                print("App: failed to download preferred favicon for \(url): \(error)")
+            if (bookmark.url != nil) {
+                let labelNode = SKSpriteNode()
+                let url:String = bookmark.url!.absoluteString
+                labelNode.name = bookmark.title
+                
+                do {
+                    try FavIcon.downloadPreferred(url, width: 200, height: 200, completion: { (result) in
+                        if case let .success(image) = result {
+                            let Texture = SKTexture(image: image)
+                            labelNode.texture = Texture
+                            labelNode.size = CGSize(width: 50, height: 50)
+                        } else if case let .failure(error) = result {
+                            print("App: failed to download preferred favicon for \(url): \(error)")
+                        }
+                    })
+                } catch let error {
+                    print("App: failed to download preferred favicon for \(url): \(error)")
+                }
+                return labelNode
             }
-            return labelNode
+            else {
+                return nil
+            }
+            
         }
         else {
             return nil

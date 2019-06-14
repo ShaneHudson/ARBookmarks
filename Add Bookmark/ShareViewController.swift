@@ -38,7 +38,7 @@ class ShareViewController: UIViewController {
                     if attachment.hasItemConformingToTypeIdentifier("public.url") {
                         attachment.loadItem(forTypeIdentifier: "public.url", options: nil, completionHandler: { (url, error) in
                             if let shareURL = url as? NSURL {
-                                self.store.storeBookmark(withTitle: "Bookmark store", withURL: shareURL.absoluteURL!, isPlaced: false)
+                                self.store.storeBookmark(withTitle: "", withURL: shareURL.absoluteURL!, isPlaced: false)
                                 self.extensionContext?.completeRequest(returningItems: [], completionHandler:nil)
                             }
                         })
