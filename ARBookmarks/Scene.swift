@@ -28,7 +28,8 @@ class Scene: SKScene {
         
         if (targets.count > 0) {
             sight.color = UIColor.green
-            viewController.setTarget(newTarget: targets[0].name!)
+            let bookmark:Bookmark = store.getByID(id: targets[0].name!)
+            viewController.setTarget(newTarget: bookmark.title!)
         }
         else {
             sight.color = UIColor.white
@@ -60,8 +61,10 @@ class Scene: SKScene {
         
         if (targets.count > 0) {
             let target = targets.first
-            let url = target!.name!
-            promptOpenURL(url: url, node: target!)
+            
+            let bookmark:Bookmark = store.getByID(id: target!.name!)
+            let url = bookmark.url
+            promptOpenURL(url: url!.absoluteString, node: target!)
         } else {
             
             if let currentFrame = sceneView.session.currentFrame {

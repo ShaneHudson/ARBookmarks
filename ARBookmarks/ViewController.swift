@@ -19,7 +19,7 @@ class ViewController: UIViewController, ARSKViewDelegate {
     @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var resetButton: UIButton!
     
-    let debug = false
+    let debug = true
     
     let store = CoreDataStack.store
     var selected:URLAnchor? = nil
@@ -105,7 +105,7 @@ class ViewController: UIViewController, ARSKViewDelegate {
             if (bookmark.url != nil) {
                 let labelNode = SKSpriteNode()
                 let url:String = bookmark.url!.absoluteString
-                labelNode.name = bookmark.title
+                labelNode.name = bookmark.uuid
                 
                 do {
                     try FavIcon.downloadPreferred(url, width: 200, height: 200, completion: { (result) in
