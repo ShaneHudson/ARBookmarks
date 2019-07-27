@@ -10,6 +10,7 @@
 		BA4FA737502151092FE74E54 /* Pods_ARBookmarks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07CF2A7E8B9EF25FE8166A51 /* Pods_ARBookmarks.framework */; };
 		C012D09A216E2FEB00841CE4 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C012D099216E2FEB00841CE4 /* NavigationController.swift */; };
 		C015C8B02173E43E002406B8 /* Add Bookmark.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = C083461F21568B9B000761D4 /* Add Bookmark.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		C01935EE22B6505600A1427F /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C01935ED22B6505600A1427F /* Settings.bundle */; };
 		C04C8197227DB7FA00B80E31 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C04C8196227DB7FA00B80E31 /* MainInterface.storyboard */; };
 		C0520ED32156FCB300651A5C /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = C006ECCB2156F0060084E80F /* CoreDataStack.swift */; };
 		C0520ED62156FCC400651A5C /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = C006ECCB2156F0060084E80F /* CoreDataStack.swift */; };
@@ -62,6 +63,7 @@
 		2A74C17A4E86ED25BC121780 /* Pods-ARBookmarks.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARBookmarks.release.xcconfig"; path = "Pods/Target Support Files/Pods-ARBookmarks/Pods-ARBookmarks.release.xcconfig"; sourceTree = "<group>"; };
 		C006ECCB2156F0060084E80F /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		C012D099216E2FEB00841CE4 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
+		C01935ED22B6505600A1427F /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		C04C8196227DB7FA00B80E31 /* MainInterface.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainInterface.storyboard; sourceTree = "<group>"; };
 		C0520EDA2156FF0500651A5C /* Bookmark+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Bookmark+CoreDataClass.swift"; path = "ARBookmarks/Bookmark+CoreDataClass.swift"; sourceTree = "<group>"; };
 		C0520EDB2156FF0500651A5C /* Bookmark+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Bookmark+CoreDataProperties.swift"; path = "ARBookmarks/Bookmark+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 				C08B5BEC214A43EC00516866 /* ViewController.swift */,
 				C08B5BEE214A43EC00516866 /* Main.storyboard */,
 				C0575BB3215A0EB2003E715E /* BrowseViewController.swift */,
+				C01935ED22B6505600A1427F /* Settings.bundle */,
 				C08B5BF1214A43ED00516866 /* Assets.xcassets */,
 				C08B5BF3214A43ED00516866 /* LaunchScreen.storyboard */,
 				C08B5BF6214A43ED00516866 /* Info.plist */,
@@ -287,6 +290,7 @@
 			files = (
 				C08B5BF5214A43ED00516866 /* LaunchScreen.storyboard in Resources */,
 				C08B5BF2214A43ED00516866 /* Assets.xcassets in Resources */,
+				C01935EE22B6505600A1427F /* Settings.bundle in Resources */,
 				C0D8E3F1214AD4DF00926475 /* Scene.sks in Resources */,
 				C08B5BF0214A43EC00516866 /* Main.storyboard in Resources */,
 			);

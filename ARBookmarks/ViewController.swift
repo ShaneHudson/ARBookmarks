@@ -25,6 +25,8 @@ class ViewController: UIViewController, ARSKViewDelegate {
     var selected:URLAnchor? = nil
     var scene = SKScene(fileNamed: "Scene") as! Scene
     var hasAppeared:Bool = false
+    var fileSize = 0
+    var recentState = ""
     
     @IBOutlet weak var targetView: UIView!
     @IBOutlet weak var targetLabel: UILabel!
@@ -69,6 +71,8 @@ class ViewController: UIViewController, ARSKViewDelegate {
         sceneView.presentScene(scene)
         scene.viewController = self
         
+        checkReset()
+        
         if #available(iOS 12.0, *) {
             if (!self.hasAppeared) {
                 self.Load()
@@ -81,10 +85,15 @@ class ViewController: UIViewController, ARSKViewDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        checkReset()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        
+        if #available(iOS 12.0, *) {
+            self.Save()
+        }
         
         // Pause the view's session
 //        sceneView.session.pause()
@@ -181,6 +190,8 @@ class ViewController: UIViewController, ARSKViewDelegate {
         
         Mapping: \(frame.worldMappingStatus.description)
         Tracking: \(frame.camera.trackingState.description)
+        File size: \(self.fileSize)
+        State: \(self.recentState)
         """
     }
     
@@ -199,7 +210,7 @@ class ViewController: UIViewController, ARSKViewDelegate {
     }
     
     func sessionInterruptionEnded(_ session: ARSession) {
-        // Reset tracking and/or remove existing anchors if consistent tracking is required
+        checkReset()
     }
     
     // MARK: - Persistence: Saving and Loading
@@ -225,7 +236,7 @@ class ViewController: UIViewController, ARSKViewDelegate {
         
         /// - Tag: ReadWorldMap
         if ((mapDataFromFile) == nil) {
-            errorLabel.text = "Failed to load world map"
+            recentState = "Failed to load world map"
             print("Failed to load world map")
             self.initWorld()
         }
@@ -236,15 +247,16 @@ class ViewController: UIViewController, ARSKViewDelegate {
                         fatalError("Map data should already be verified to exist before Load button is enabled.")
                     }
                 print("App: Load: ", data)
+                self.fileSize = data.count
                 do {
                     guard let worldMap = try NSKeyedUnarchiver.unarchivedObject(ofClass: ARWorldMap.self, from: data)
                         else { fatalError("No ARWorldMap in archive.") }
                     
-                    errorLabel.text = "Loaded world map"
+                    recentState = "Loaded world map"
                     print("Loaded world map")
                     return worldMap
                 } catch {
-                    errorLabel.text = "Can't unarchive ARWorldMap"
+                    recentState = "Can't unarchive ARWorldMap"
                     errorLabel.backgroundColor = UIColor.red
                     print("Can't unarchive ARWorldMap from file data: \(error)")
                     return nil
@@ -252,7 +264,7 @@ class ViewController: UIViewController, ARSKViewDelegate {
             }()
             
             if (worldMap == nil) {
-                errorLabel.text = "Failed to load nil world map"
+                recentState = "Failed to load nil world map"
                 print("Failed to load nil world map")
                 self.initWorld()
             }
@@ -275,14 +287,24 @@ class ViewController: UIViewController, ARSKViewDelegate {
             
             do {
                 let data = try NSKeyedArchiver.archivedData(withRootObject: worldMap!, requiringSecureCoding: true)
+                self.fileSize = data.count
                 print("App: Save: ", data)
-                self.errorLabel.text = "Saved"
+                self.recentState = "Saved"
                 try data.write(to: self.mapSaveURL, options: [.atomic])
             } catch {
                 print("App: Save failed")
-                self.errorLabel.text = "Save failed"
+                self.recentState = "Save failed"
                 fatalError ("Can't save map: \(error.localizedDescription)")
             }
+        }
+    }
+    
+    func checkReset() {
+        let needsReset = UserDefaults.standard.bool(forKey: "reset_world_map")
+        if (needsReset) {
+            initWorld()
+            recentState = "Reset world map via settings"
+            UserDefaults.standard.set(false, forKey: "reset_world_map")
         }
     }
 
@@ -301,5 +323,6 @@ class ViewController: UIViewController, ARSKViewDelegate {
     
     @IBAction func Reset(_ sender: Any) {
         initWorld()
+        recentState = "Reset world map via debug button"
     }
 }
