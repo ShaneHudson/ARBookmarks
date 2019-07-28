@@ -102,6 +102,11 @@ class Scene: SKScene {
                 "Unplaced bookmarks": self.store.unplacedBookmarks,
             ] )
             node.removeFromParent()
+            
+            // This save is not working correctly
+            if #available(iOS 12.0, *) {
+                self.viewController.Save()
+            }
         }
         
         ac.addAction(submitAction)

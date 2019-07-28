@@ -206,7 +206,10 @@ class ViewController: UIViewController, ARSKViewDelegate {
     }
     
     func sessionWasInterrupted(_ session: ARSession) {
-        // Inform the user that the session has been interrupted, for example, by presenting an overlay
+        // This Save is to fix a bug where the most recent bookmark never showed on load
+        if #available(iOS 12.0, *) {
+            Save()
+        }
     }
     
     func sessionInterruptionEnded(_ session: ARSession) {
@@ -315,7 +318,7 @@ class ViewController: UIViewController, ARSKViewDelegate {
         let configuration = ARWorldTrackingConfiguration()
         
         // Run the view's session
-        sceneView.session.run(configuration)
+        sceneView.session.run(configuration, options: [.resetTracking, .removeExistingAnchors])
         if #available(iOS 12.0, *) {
             self.Save()
         }
